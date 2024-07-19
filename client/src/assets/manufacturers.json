@@ -1,0 +1,148 @@
+[
+    {
+        "id": 1,
+        "name": "Pfizer",
+        "description": "Pfizer Inc. is a research-based, global biopharmaceutical company. Pfizer is committed to fulfilling their purpose, “Breakthroughs that change patients’ lives”, through the discovery, development, manufacture, marketing, sales, and distribution of biopharmaceutical products worldwide. With products sold in over 125 countries, Pfizer’s key products include Prevnar 13, Ibrance, Eliquis, Xeljanz, Enbrel, Xtandi, Vyndaqel/Vyndamax, Chantix/Champix, Sutent, etc..  Vaccine business was taken over from Wyeth (in Year). And was slowly expanded. Pfizer also produces a COVID-19 vaccine in collaboration with BioNTech: Pfizer-BioNTech COVID-19 vaccine (BNT162b2).",
+        "information": {
+            "founded": "1849",
+            "headquarters": "New York City, U.S.",
+            "ceo": "Dr. Albert Bourla",
+            "revenue": "US$41.908 billion",
+            "operatingIncome": "US$8.16 billion",
+            "netIncome": "US$9.615 billion",
+            "totalAssets": "US$178.983 billion",
+            "totalEquity": "US$65.495 billion",
+            "numberOfEmployees": "78,500",
+            "sources": [
+                {
+                    "title": "2020 Annual Report on Form 10-K",
+                    "link" :"https://s21.q4cdn.com/317678438/files/doc_financials/2020/ar/PFE-2020-Form-10K-FINAL.pdf"
+                }
+            ],
+            "lastUpdated": "2020"
+        },
+        "vaccines": [
+            {
+                "id": 1006,
+                "tradename": "Comirnaty",
+                "vaccineType": "mRNA Covid vaccine",
+                "comments": "First license, 12/2020",
+                "revenue": "21 bn USD expected (2021)"
+            },
+            {
+                "id": 1005,
+                "tradename": "Prevenar 13, Prevenar 7",
+                "vaccineType": "7 or 13-valent pneumococcal conjugate vaccine",
+                "comments": "",
+                "revenue": ""
+            },
+            {
+                "id": 1004,
+                "tradename": "Trumenba",
+                "vaccineType": "Meningococcal B vaccine",
+                "comments": "",
+                "revenue": ""
+            },
+            {
+                "id": 1003,
+                "tradename": "Meningococcal ACWY",
+                "vaccineType": "Meningococcal ACWY conjugate vaccine",
+                "comments": "",
+                "revenue": ""
+            },
+            {
+                "id": 1002,
+                "tradename": "FSME/Immun / Tico-Vac",
+                "vaccineType": "Tick-borne-encephalitis (TBE) whole-virus vaccine",
+                "comments": "",
+                "revenue": ""
+            }
+        ] 
+    },
+    {
+        "id": 2,
+        "name": "Johnson & Johnson",
+        "description": "Johnson & Johnson engages in research and development, manufacture and sale of a broad range of products in the health care field. They are organized into three business segments: Consumer Health, Pharmaceutical and Medical Devices. With products sold in over 175 countries, Johnson & Johnson’s key pharmaceutical products include REMICADE®, SIMPONI®, SIMPONI ARIA®, STELARA®, DARZALEX®, IMBRUVICA®, etc. Johnson & Johnson also produces a COVID-19 vaccine: Janssen COVID-19 Vaccine.",
+        "information": {
+            "founded": "1886",
+            "headquarters": "New Jersey, U.S.",
+            "ceo": "Alex Gorsky",
+            "revenue": "US$82.584 billion",
+            "operatingIncome": "US$16.497 billion",
+            "netIncome": "US$14.714 billion",
+            "totalAssets": "US$174.894 billion",
+            "totalEquity": "US$63.278 billion",
+            "numberOfEmployees": "134,500",
+            "sources": [
+                {
+                    "title": "Johnson & Johnson Financial Statements 2005-2021",
+                    "link": "https://www.macrotrends.net/stocks/charts/JNJ/johnson-johnson/financial-statements"
+                },
+                {
+                    "name": "Johnson & Johnson Annual Report 2020",
+                    "link": "https://www.investor.jnj.com/annual-meeting-materials/2020-annual-report/"
+                }
+            ],
+            "lastUpdated": "2020"
+        }
+    },
+    {
+        "id": 3,
+        "name": "GlaxoSmithKline",
+        "description": "GlaxoSmithKline (GSK) is a multinational pharmaceutical company with a purpose to improve the quality of human life by helping people do more, feel better, and live longer. GSK is organized into three business segments: pharmaceuticals, vaccines, and consumer healthcare. GSK operates in more than 150 countries with employees across 96 markets. Key products include Bexsero, Fluarix/FluLaval, Shingrix, Boostrix, Synflorix, Rotarix, Infanrix, Pediarix, Hepatitis vaccine, etc.",
+        "information": {
+            "founded": "2000",
+            "headquarters": "London, England",
+            "ceo": "Emma Walmsley",
+            "revenue": "GB£34.099 billion",
+            "operatingIncome": "GB£7.783 billion",
+            "netIncome": "GB£5.749 billion",
+            "totalAssets": "GB£80.431 billion",
+            "totalEquity": "GB£20.808 billion",
+            "numberOfEmployees": "94,000+",
+            "sources": [
+                {
+                    "title": "Full year and fourth quarter 2020 report",
+                    "link": "https://www.gsk.com/media/6557/fy-2020-results-announcement.pdf"
+                },
+                {
+                    "title": "GSK Key Facts",
+                    "link": "https://www.gsk.com/en-gb/company/gsk-at-a-glance/"
+                }
+            ],
+            "lastUpdated": ""
+        },
+        "vaccines": [
+            {
+                "id": 1001,
+                "tradename": "Hepatitis vaccine",
+                "vaccineType": "",
+                "comments": "",
+                "revenue": ""
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Merck & Co., Inc.",
+        "description": "Merck & Co., Inc. is a global health care company that delivers innovative health solutions through its prescription medicines, vaccines, biologic therapies, and animal health products. Merck operates in two segments: Pharmaceutical and Animal Health segments. The Pharmaceutical segment includes human health pharmaceutical and vaccine products while the Animal Health segment discovers, develops, manufactures and markets a wide range of veterinary pharmaceutical and vaccine products, as well as health management solutions and services, for the prevention, treatment and control of disease in all major livestock and companion animal species. Merck operates in more than 140 countries worldwide with key products such as Gardasil, Varivax, Pneumovax, ProQuad, M-M-R II, etc.",
+        "information": {
+            "founded": "1891",
+            "headquarters": "New Jersey, U.S.",
+            "ceo": "Robert M. Davis",
+            "revenue": "US$47.994 billion",
+            "operatingIncome": "US$8.791 billion",
+            "netIncome": "US$7.067 billion",
+            "totalAssets": "US$89.800 billion",
+            "totalEquity": "US$29.270 billion",
+            "numberOfEmployees": "74,000"
+        },
+        "sources": [
+            {
+                "title": "Merck & Co., Inc. 2020 Form 10-K Annual Report",
+                "link": "https://www.sec.gov/ix?doc=/Archives/edgar/data/310158/000031015821000004/mrk-20201231.htm"
+            }
+        ],
+        "lastUpdated": "2020"
+    }    
+]
