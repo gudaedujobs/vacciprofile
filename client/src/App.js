@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import manufactuers from './assets/data/manufacturers.json';
+import viruses from './assets/data/viruses.json';
 
 const App = () => {
 
@@ -24,18 +25,34 @@ const App = () => {
                     </span>
                 </div>
                 <div className='manufacturer-list'>
-                    {manufactuers.map((m,i)=><div key={i}>{m.name}</div>)}
+                    {manufactuers.map((m,i)=><div key={i} onClick={()=>setActiveManufacturer(m)}>{m.name}</div>)}
                 </div>
             </div>
             <div className='view-container col-9 border border-primary border-1 rounded-0 p-0'>
                 <h1 className='heading text-primary px-3 pt-2'>Updated Virus-Reported Data</h1>
-                <div className='view-header row bg-primary m-0'>
-                    <div className='col-2'></div>
-                    <div className='col-2'></div>
-                    <div className='col-2'></div>
-                    <div className='col-2'></div>
-                    <div className='col-2'></div>
-                    <div className='col-2'></div>
+                <div className='view-header bg-primary m-0'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Virus</td>
+                                <td>Vaccine</td>
+                                <td>Country</td>
+                                <td>Manufacturer</td>
+                                <td>Accreditation</td>
+                                <td>Recommendation</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
