@@ -20,6 +20,26 @@ a {
 .row {
     padding: 0 10vw;
 }
+
+
+.subheading {
+    font-size: 1em;
+}
+
+.heading {
+    font-size: 2em;
+}
+
+.sidebar-item {
+    font-size: 14px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.sidebar-item:hover {
+    background-color: $darker !important;
+    color: white !important;
+}
   
 td, th, span {
     word-wrap: break-word; 
@@ -63,21 +83,14 @@ table {
     cursor: default;
 }
 
-.subheading {
-    font-size: 1em;
+.read-more {
+    color: $warning;
 }
 
-.heading {
-    font-size: 2em;
+.read-more:hover {
+    text-decoration: underline!important;
 }
 
-.sidebar-item {
-    font-size: 14px;
-    padding-left: 9px;
-    padding-right: 9px;
-}
-
-.sidebar-item:hover {
-    background-color: $darker !important;
-    color: white !important;
+.last-updated {
+    font-size: 11px;
 }

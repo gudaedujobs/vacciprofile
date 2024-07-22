@@ -111,7 +111,7 @@ const App = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='virus-cell'><span className='pill-unselected badge'>{selectedVirus.name}</span></td>
+                                    <td className='virus-cell'><span className='pill-unselected badge' onClick={()=>{handleSelectVirus(selectedVirus)}}>{selectedVirus.name}</span></td>
                                     <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine)}>{vaccine}</span>)}</td>
                                     <td className='country-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>) : '-'}</td>
                                     <td className='manufacturer-cell'><span className='pill-unselected badge' onClick={()=>handleSelectManufacturer()}>{getManufacturerByVaccine()}</span></td>
@@ -123,9 +123,11 @@ const App = () => {
                     </div>
                     <div className='details-container px-3 pt-2 pb-3'>
                         {detailsType==="Virus" ? <div>
-                            {selectedVirus.description}
-                        </div> : detailsType==="Vaccine" ? <div>
-                            {selectedVaccine.description}
+                            <p>{selectedVirus.description}</p>
+                        </div> : detailsType==="Vaccine" ? <div className='position-relative'>
+                            <p className='mb-3'>{selectedVaccine.description}</p>
+                            <p className='mb-0'><a className='read-more' target="_blank" rel="noopener noreferrer" href={`${selectedVaccine.link}`}>Learn more...</a></p>
+                            <span className='last-updated text-muted position-absolute end-0 bottom-0'>Last updated: {selectedVaccine.lastUpdated}</span>
                         </div> : detailsType==="Manufacturer" ? <div>
                             {selectedManufacturer.description}
                         </div> : <></>}
