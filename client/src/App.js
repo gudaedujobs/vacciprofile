@@ -69,6 +69,10 @@ const App = () => {
     const getVaccinesByAccreditation = () => {
         return vaccines.filter(vaccine => vaccine.accreditation.includes(selectedAccreditation));
     }
+
+    const getVaccinesByManufacturer = () => {
+        return vaccines.filter(vaccine => vaccine.manufacturerId === selectedManufacturer.manufacturerId);
+    }
     
     return (
         <div className='container'>
@@ -127,14 +131,25 @@ const App = () => {
                     </div>
                     <div className='details-container px-3 pt-2 pb-3'>
                         {detailsType==="Virus" ? <div>
+                            <h4 className='report-heading'>{selectedVirus.name}</h4>
                             <p>{selectedVirus.description}</p>
                         </div> : detailsType==="Vaccine" ? <div className='position-relative'>
+                            <h4 className='report-heading'>{selectedVaccine.name}</h4>
                             <p className='mb-3'>{selectedVaccine.description}</p>
                             <p className='mb-0'><a className='read-more' target="_blank" rel="noopener noreferrer" href={`${selectedVaccine.link}`}>Learn more...</a></p>
                             <span className='last-updated text-muted position-absolute end-0 bottom-0'>Last updated: {selectedVaccine.lastUpdated}</span>
                         </div> : detailsType==="Manufacturer" ? <div>
-                            {selectedManufacturer.description}
+                            <h4 className='report-heading'>{selectedManufacturer.name}</h4> 
+                            <p>{selectedManufacturer.description}</p>
+                            <table className='table'>
+                                <thead>
+                                    
+                                </thead>
+                            </table>
+                            <span className='vaccines-label'>Vaccines: </span>
+                            {getVaccinesByManufacturer().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
                         </div> : detailsType==="Accreditation" ? <div>
+                            <h4 className='report-heading'>{selectedAccreditation} Vaccines</h4>
                             {getVaccinesByAccreditation().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
                         </div> : <></>}
                     </div>

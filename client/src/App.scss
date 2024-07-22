@@ -64,9 +64,9 @@ table {
     word-wrap: break-word; 
     width: auto; 
     text-align: left;
-    padding: 4px 6px;
+    padding: 4px 6.5px;
     margin-bottom: 2px;
-    margin-right: 2px;
+    margin-right: 3px;
 }
 
 .pill-unselected:hover {
@@ -81,6 +81,16 @@ table {
 .pill-unselectable:hover {
     background-color: $unselectable!important;  
     cursor: default;
+}
+
+.report-heading {
+    font-size: 20px;
+    color: $primary;
+    padding-top: 8px;
+}
+
+.vaccines-label {
+    font-size: 12px;
 }
 
 .read-more {
