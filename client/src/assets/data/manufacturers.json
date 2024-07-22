@@ -28,7 +28,8 @@
             { "vaccineId": 6 },
             { "vaccineId": 7 },
             { "vaccineId": 8 }
-        ] 
+        ],
+        "link": "https://www.pfizer.com/products/product-list"
     },
     {
         "manufacturerId": 5,
@@ -67,7 +68,12 @@
                 }
             ],
             "lastUpdated": "2020"
-        }
+        },
+        "vaccines": [
+            {
+            
+            }
+        ]
     },
     {
         "manufacturerId": 3,
@@ -122,6 +128,11 @@
                 "link": "https://www.sec.gov/ix?doc=/Archives/edgar/data/310158/000031015821000004/mrk-20201231.htm"
             }
         ],
-        "lastUpdated": "2020"
+        "lastUpdated": "2020",
+        "vaccines": [
+            {
+            
+            }
+        ]
     }
 ]

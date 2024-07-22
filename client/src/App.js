@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 import manufactuers from './assets/data/manufacturers.json';
 import viruses from './assets/data/viruses.json';
+import vaccines from './assets/data/vaccines.json';
 
 const App = () => {
 
-    const [ activeManufacturer , setActiveManufacturer ] = useState({});
+    const [ selectedManufacturer , setSelectedManufacturer ] = useState({});
+    const [ selectedVirus , setSelectedVirus ] = useState({});
+    const [ selectedVaccine , setSelectedVaccine ] = useState({});
+    const [ activeViewDetails, setActiveViewDetails ] = useState("Blank");
 
     const handleSearch = keyword => {}
 
@@ -25,7 +29,7 @@ const App = () => {
                     </span>
                 </div>
                 <div className='manufacturer-list'>
-                    {manufactuers.map((m,i)=><div key={i} onClick={()=>setActiveManufacturer(m)}>{m.name}</div>)}
+                    {viruses.map((v,i)=><div key={i} onClick={()=>setSelectedVirus(v)}>{v.name}</div>)}
                 </div>
             </div>
             <div className='view-container col-9 border border-primary border-1 rounded-0 p-0'>
@@ -44,12 +48,12 @@ const App = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{selectedVirus.name}</td>
+                                <td>{selectedVirus.vaccines ? selectedVirus.vaccines.map((vaccine, index) => <span>{vaccine.name}</span>) :<></>}</td>
+                                <td>{selectedVirus.name}</td>
+                                <td>{selectedVirus.name}</td>
+                                <td>{selectedVirus.name}</td>
+                                <td>{selectedVirus.name}</td>
                             </tr>
                         </tbody>
                     </table>
