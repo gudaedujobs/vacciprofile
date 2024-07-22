@@ -57,6 +57,7 @@
     {
         "name": "Prevnar 20™",
         "vaccineId": 6,
+        "virusId": 3,
         "manufacturer": "Pfizer",
         "country": ["United States", "European Union", "Canada", "Australia", "Japan"],
         "accreditation": ["FDA", "EMA", "WHO"],
