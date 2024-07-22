@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
-import manufacturers from './assets/data/manufacturers.json';
+// import manufacturers from './assets/data/manufacturers.json';
 import viruses from './assets/data/viruses.json';
 import vaccines from './assets/data/vaccines.json';
 
 const App = () => {
-    const [selectedManufacturer, setSelectedManufacturer] = useState({});
+    // const [selectedManufacturer, setSelectedManufacturer] = useState({});
     const [selectedVirus, setSelectedVirus] = useState({});
     const [selectedVaccine, setSelectedVaccine] = useState({});
-    const [activeViewDetails, setActiveViewDetails] = useState("Blank");
+    // const [activeViewDetails, setActiveViewDetails] = useState("Blank");
 
     const handleSearch = keyword => {
         // Handle search logic here
