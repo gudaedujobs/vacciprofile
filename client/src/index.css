@@ -24,3 +24,8 @@ a {
 .row {
   padding: 0 10vw;
 }
+
+td, th {
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+}
