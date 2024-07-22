@@ -1,4 +1,7 @@
-a {
-    text-decoration: none!important;
-    color: inherit;
+.subheading {
+    font-size: 1.5vw!important;
+}
+
+.heading {
+    font-size: 3vw;
 }
