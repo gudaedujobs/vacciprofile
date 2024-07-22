@@ -18,7 +18,7 @@ const App = () => {
         const vaccine = vaccines.find(vaccine => vaccine.vaccineId === virus.vaccines[0].vaccineId);
         setSelectedVaccine(vaccine);
         setSelectedVirus(virus);
-        setActiveViewDetails("Virus");
+        // setActiveViewDetails("Virus");
     };
 
     const handleSelectVaccine = vaccine => {
