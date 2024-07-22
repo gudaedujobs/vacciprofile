@@ -1,16 +1,20 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
-$primary: rgb(70, 136, 117);
+$primary: rgb(49, 107, 91);
 $secondary: rgb(27, 66, 55);
 $tertiary: rgb(201, 149, 53);
 $light: rgb(224, 228, 227);
 $info: rgb(185, 194, 191);
-$warning: rgb(25, 48, 222);
+$warning: rgb(35, 116, 93);
 $success: rgb(84, 128, 115);
 $danger:rgb(167, 57, 57);
+$tableLight: rgb(220, 229, 227);
 $dark: #3e3f3e;
 $darker: rgb(141, 145, 144);
+$selected: rgb(149, 192, 183);
+$pale: rgb(153, 188, 181);
+$paler: rgb(128, 177, 167);
 
 $theme-colors: (
   "primary": $primary, 
@@ -22,7 +26,11 @@ $theme-colors: (
   "info": $info,
   "dark": $dark,
   "light": $light,
-  "darker": $darker
+  "darker": $darker,
+  "selected": $selected,
+  "pale": $pale,
+  "paler": $paler,
+  "table-light": $tableLight
 );
 
 @import '~bootstrap/scss/bootstrap.scss';

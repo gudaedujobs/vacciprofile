@@ -6,9 +6,9 @@ import vaccines from './assets/data/vaccines.json';
 
 const App = () => {
     // const [selectedManufacturer, setSelectedManufacturer] = useState({});
-    const [selectedVirus, setSelectedVirus] = useState({});
+    const [selectedVirus, setSelectedVirus] = useState(viruses[0]);
     const [selectedVaccine, setSelectedVaccine] = useState({});
-    const [detailsType, setDetailsType] = useState("");
+    const [detailsType, setDetailsType] = useState("Virus");
 
     const handleSearch = keyword => {
         // Handle search logic here
@@ -31,7 +31,7 @@ const App = () => {
 
     const getCountriesForVaccine = vaccineId => {
         const vaccine = getVaccineById(vaccineId);
-        return vaccine && vaccine.country ? vaccine.country.join(', ') : '-';
+        return vaccine.country;
     };
 
     const getAccreditationsForVaccine = vaccineId => {
@@ -49,28 +49,15 @@ const App = () => {
         return vaccine ? vaccine.recommendation : '-';
     };
 
-    const getVaccineNames = vaccinesArray => {
-        if (!vaccinesArray || vaccinesArray.length === 0) return '-';
-        
-        return vaccinesArray.map((vaccine, index) => {
+    const getVaccineNames = (vaccinesArray) => {
+        if (!vaccinesArray || vaccinesArray.length === 0) return ['-'];
+    
+        return vaccinesArray.map(vaccine => {
             const vaccineDetail = getVaccineById(vaccine.vaccineId);
-            const isSelected = vaccineDetail && selectedVaccine && vaccineDetail.vaccineId === selectedVaccine.vaccineId;
-            
-            return (
-                <React.Fragment key={index}>
-                    <span
-                        className={isSelected ? 'text-decoration-underline' : ''}
-                        onClick={() => handleSelectVaccine(vaccineDetail)}
-                    >
-                        {vaccineDetail ? vaccineDetail.name : '-'}
-                    </span>
-                    {index < vaccinesArray.length - 1 && <span>, </span>}
-                </React.Fragment>
-            );
+            return vaccineDetail ? vaccineDetail.name : '-';
         });
     };
     
-
     return (
         <div className='container'>
             <div className='row bg-primary text-white py-4'>
@@ -96,7 +83,7 @@ const App = () => {
                     </div>
                     <div className='virus-list mt-3'>
                         {viruses.map((v, i) => (
-                            <div key={i} className='virus-list-item bg-light text-dark rounded-3 py-1 mt-2' onClick={() => handleSelectVirus(v)}>{v.name}</div>
+                            <div key={i} className='sidebar-item bg-light text-dark rounded-3 py-1 mt-2' onClick={() => handleSelectVirus(v)}>{v.name}</div>
                         ))}
                     </div>
                 </div>
@@ -116,9 +103,9 @@ const App = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='hover-highlight'>{selectedVirus.name}</td>
-                                    <td className=''>{getVaccineNames(selectedVirus.vaccines)}</td>
-                                    <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
+                                    <td className='hover-highlight'><span className='pill-unselected badge bg-pale px-1'>{selectedVirus.name}</span></td>
+                                    <td className=''>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge bg-pale px-1'>{vaccine}</span>)}</td>
+                                    <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected badge bg-pale px-1'>{country}</span>) : '-'}</td>
                                     <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getManufacturerForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
                                     <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getAccreditationsForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
                                     <td className=''>{selectedVirus.vaccines?.[0]?.vaccineId ? getRecommendationForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>

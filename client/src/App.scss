@@ -13,26 +13,42 @@ a {
     color: inherit;
   }
   
-  .container {
+.container {
     max-width: 100%;
-  }
+}
   
-  .row {
+.row {
     padding: 0 10vw;
-  }
+}
   
-  td, th {
-      word-wrap: break-word; 
-      overflow-wrap: break-word;
-  }
+td, th, span {
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+}
 
 table {
     font-size: 14px;
     margin: 0;
 }
 
-.hover-underline:hover {
-    text-decoration: underline;
+.table-success tbody tr td, .table-success thead tr th {
+    background-color: $tableLight;
+}
+
+.pill-unselected {
+    font-weight: 100;
+    font-size: 12px;
+    display: inline-block;
+    white-space: normal; 
+    word-wrap: break-word; 
+    width: auto; 
+    text-align: left;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
+
+.pill-unselected:hover {
+    background-color: $paler!important;
 }
 
 .subheading {
@@ -43,13 +59,13 @@ table {
     font-size: 2em;
 }
 
-.virus-list-item {
+.sidebar-item {
     font-size: 14px;
     padding-left: 9px;
     padding-right: 9px;
 }
 
-.virus-list-item:hover {
+.sidebar-item:hover {
     background-color: $darker !important;
     color: white !important;
 }
