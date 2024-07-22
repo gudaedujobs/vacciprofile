@@ -11,21 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-a {
-  text-decoration: none!important;
-  color: inherit;
-}
-
-.container {
-  max-width: 100%;
-}
-
-.row {
-  padding: 0 10vw;
-}
-
-td, th {
-    word-wrap: break-word; 
-    overflow-wrap: break-word;
-}

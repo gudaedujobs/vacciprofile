@@ -1,0 +1,55 @@
+@import 'assets/styles/custom';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+
+/* td:not(:last-child), th:not(:last-child) {
+    border-right: 1px solid rgb(175, 175, 175);
+} */
+
+
+a {
+    text-decoration: none!important;
+    color: inherit;
+  }
+  
+  .container {
+    max-width: 100%;
+  }
+  
+  .row {
+    padding: 0 10vw;
+  }
+  
+  td, th {
+      word-wrap: break-word; 
+      overflow-wrap: break-word;
+  }
+
+table {
+    font-size: 14px;
+    margin: 0;
+}
+
+.hover-underline:hover {
+    text-decoration: underline;
+}
+
+.subheading {
+    font-size: 1em;
+}
+
+.heading {
+    font-size: 2em;
+}
+
+.virus-list-item {
+    font-size: 14px;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.virus-list-item:hover {
+    background-color: $darker !important;
+    color: white !important;
+}
