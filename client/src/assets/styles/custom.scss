@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
-$primary: rgb(49, 107, 91);
+$primary: rgb(58, 109, 109);
 $secondary: rgb(27, 66, 55);
 $tertiary: rgb(201, 149, 53);
 $light: rgb(224, 228, 227);
@@ -14,7 +14,8 @@ $dark: #3e3f3e;
 $darker: rgb(141, 145, 144);
 $selected: rgb(149, 192, 183);
 $pale: rgb(153, 188, 181);
-$paler: rgb(128, 177, 167);
+$hover: rgb(128, 177, 167);
+$unselectable: rgb(173, 184, 181);
 
 $theme-colors: (
   "primary": $primary, 
@@ -29,7 +30,8 @@ $theme-colors: (
   "darker": $darker,
   "selected": $selected,
   "pale": $pale,
-  "paler": $paler,
+  "hover": $hover,
+  "unselectable": $unselectable,
   "table-light": $tableLight
 );
 

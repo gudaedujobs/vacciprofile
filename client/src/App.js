@@ -103,12 +103,12 @@ const App = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className='hover-highlight'><span className='pill-unselected badge bg-pale px-1'>{selectedVirus.name}</span></td>
-                                    <td className=''>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge bg-pale px-1'>{vaccine}</span>)}</td>
-                                    <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected badge bg-pale px-1'>{country}</span>) : '-'}</td>
-                                    <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getManufacturerForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
-                                    <td className='hover-highlight'>{selectedVirus.vaccines?.[0]?.vaccineId ? getAccreditationsForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
-                                    <td className=''>{selectedVirus.vaccines?.[0]?.vaccineId ? getRecommendationForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
+                                    <td className='virus-cell'><span className='pill-unselected badge'>{selectedVirus.name}</span></td>
+                                    <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge'>{vaccine}</span>)}</td>
+                                    <td className='country-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>) : '-'}</td>
+                                    <td className='manufacturer-cell'><span className='pill-unselected badge'>{selectedVirus.vaccines?.[0]?.vaccineId ? getManufacturerForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</span></td>
+                                    <td className='accreditation-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getAccreditationsForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
+                                    <td className='recommendation-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getRecommendationForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
                                 </tr> 
                             </tbody>
                         </table>

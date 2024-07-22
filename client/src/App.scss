@@ -36,6 +36,7 @@ table {
 }
 
 .pill-unselected {
+    background-color: $pale;
     font-weight: 100;
     font-size: 12px;
     display: inline-block;
@@ -43,12 +44,22 @@ table {
     word-wrap: break-word; 
     width: auto; 
     text-align: left;
+    padding: 4px 6px;
     margin-bottom: 2px;
     margin-right: 2px;
 }
 
 .pill-unselected:hover {
-    background-color: $paler!important;
+    background-color: $hover!important;
+    cursor: pointer;
+}
+
+.pill-unselectable {
+    background-color: $unselectable!important;
+}
+
+.pill-unselectable:hover {
+    cursor: none;
 }
 
 .subheading {
