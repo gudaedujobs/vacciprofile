@@ -2,6 +2,7 @@
     {
         "name": "Abrysvo™",
         "vaccineId": 1,
+        "virusId": 1, 
         "manufacturer": "Pfizer",
         "country": ["United States", "European Union"],
         "accreditation": ["FDA", "EMA"],
@@ -12,6 +13,7 @@
     {
         "name": "Comirnaty",
         "vaccineId": 2,
+        "virusId": 2, 
         "manufacturer": "Pfizer-BioNTech",
         "country": ["United States", "European Union", "United Kingdom", "Canada", "Australia"],
         "accreditation": ["FDA", "EMA", "MHRA", "Health Canada", "TGA"],
@@ -22,6 +24,7 @@
     {
         "name": "Penbraya™",
         "vaccineId": 3,
+        "virusId": 3, 
         "manufacturer": "Pfizer",
         "country": ["United States", "European Union", "United Kingdom", "Canada", "Australia"],
         "accreditation": ["FDA", "EMA"],
@@ -32,6 +35,7 @@
     {
         "name": "Pfizer-BioNTech COVID-19 Vaccine",
         "vaccineId": 4,
+        "virusId": 2, 
         "manufacturer": "Pfizer-BioNTech",
         "country": ["United States", "European Union", "United Kingdom", "Canada", "Australia", "Japan"],
         "accreditation": ["FDA", "EMA", "WHO"],
@@ -42,6 +46,7 @@
     {
         "name": "Prevnar 13",
         "vaccineId": 5,
+        "virusId": 3, 
         "manufacturer": "Pfizer",
         "country": ["United States", "European Union", "Canada", "Australia", "Japan"],
         "accreditation": ["FDA", "EMA", "WHO"],
@@ -62,6 +67,7 @@
     {
         "name": "TicoVac™",
         "vaccineId": 7,
+        "virusId": 4,
         "manufacturer": "Pfizer",
         "country": ["European Union", "Switzerland", "Norway", "Australia"],
         "accreditation": ["EMA", "WHO"],
@@ -72,6 +78,7 @@
     {
         "name": "Trumenba™",
         "vaccineId": 8,
+        "virusId": 5,
         "manufacturer": "Pfizer",
         "country": ["United States", "European Union", "Canada", "Australia"],
         "accreditation": ["FDA", "EMA"],
@@ -82,6 +89,7 @@
     {
         "name": "Janssen COVID-19 Vaccine",
         "vaccineId": 9,
+        "virusId": 2,
         "manufacturer": "Johnson & Johnson",
         "country": ["USA", "UK", "Germany", "Canada"],
         "accreditation": ["WHO", "EMA", "FDA"],
@@ -92,6 +100,7 @@
     {
         "name": "Vaxzevria",
         "vaccineId": 10,
+        "virusId": 2,
         "manufacturer": "AstraZeneca",
         "country": ["USA", "UK", "Germany", "Canada"],
         "accreditation": ["WHO", "EMA", "FDA"],
@@ -102,6 +111,7 @@
     {
         "name": "Gardasil",
         "vaccineId": 11,
+        "virusId": 6,
         "manufacturer": "Merck & Co., Inc.",
         "country": ["USA", "UK", "Germany", "Canada"],
         "accreditation": ["WHO", "EMA", "FDA"],

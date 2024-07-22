@@ -12,43 +12,24 @@
         "name": "COVID-19",
         "description": "COVID-19 is a respiratory illness caused by the SARS-CoV-2 virus. It was first identified in Wuhan, China, in late 2019 and has since become a global pandemic. Symptoms can range from mild, such as fever and cough, to severe, including difficulty breathing and pneumonia. The virus primarily spreads through respiratory droplets and can lead to significant health complications, particularly in older adults and those with underlying health conditions.",
         "vaccines": [
-            { "vaccineId" : 2 }
+            { "vaccineId" : 2 },
+            { "vaccineId" : 4 },
+            { "vaccineId" : 9 },
+            { "vaccineId" : 10 }
         ]
     },
     {
         "virusId": 3,
-        "name": "Pneumococcal Disease",
-        "description": "Pneumococcal disease is caused by the bacterium Streptococcus pneumoniae. It can lead to a range of infections, including pneumonia, meningitis, and sepsis. Pneumonia is an infection of the lungs, while meningitis involves inflammation of the protective membranes covering the brain and spinal cord. Sepsis is a severe and potentially life-threatening reaction to an infection that can spread throughout the body.",
-        "vaccines": [
-            { "vaccineId": 3 }
-        ]
-    },
-    {
-        "virusId": 4,
-        "name": "COVID-19",
-        "description": "COVID-19 is an infectious disease caused by the SARS-CoV-2 virus. It primarily affects the respiratory system but can also cause symptoms in other parts of the body. Common symptoms include fever, cough, and shortness of breath. Severe cases can lead to pneumonia, acute respiratory distress syndrome (ARDS), and other complications.",
-        "vaccines": [
-            { "vaccineId": 4 }
-        ]
-    },
-    {
-        "virusId": 5,
-        "name": "Pneumococcal Disease",
+        "name": "Streptococcus pneumoniae (Bacterium)",
         "description": "Pneumococcal disease is caused by the bacterium Streptococcus pneumoniae. It can lead to various serious infections, including pneumonia, meningitis, and sepsis. The disease predominantly affects children and older adults, but can also impact other age groups. Symptoms can range from mild respiratory issues to severe illness requiring hospitalization.",
         "vaccines": [
-            { "vaccineId": 5 }
-        ]
-    },
-    {
-        "virusId": 6,
-        "name": "Pneumococcal Disease",
-        "description": "Pneumococcal disease is caused by the bacterium Streptococcus pneumoniae and can lead to serious infections including pneumonia, meningitis, and sepsis. The disease affects people of all ages, with the highest risk in young children and older adults. Prevnar 20™ aims to protect against a wider range of pneumococcal serotypes compared to earlier vaccines.",
-        "vaccines": [
+            { "vaccineId": 3 },
+            { "vaccineId": 5 },
             { "vaccineId": 6 }
         ]
     },
     {
-        "virusId": 7,
+        "virusId": 4,
         "name": "Tick-Borne Encephalitis (TBE)",
         "description": "Tick-borne encephalitis (TBE) is a viral infection transmitted by ticks that affects the central nervous system. It can cause severe symptoms including encephalitis, meningitis, and can lead to long-term neurological problems. The vaccine is recommended for individuals living in or traveling to areas where TBE is prevalent.",
         "vaccines": [
@@ -56,7 +37,7 @@
         ]
     },
     {
-        "virusId": 8,
+        "virusId": 5,
         "name": "Meningococcal B",
         "description": "Meningococcal B is a type of bacterial infection that can cause severe and potentially life-threatening conditions, including meningitis and septicemia. The disease is particularly dangerous for adolescents and young adults. The vaccine aims to reduce the incidence of these infections.",
         "vaccines": [
@@ -64,23 +45,7 @@
         ]
     },
     {
-        "virusId": 9,
-        "name": "COVID-19",
-        "description": "COVID-19 is an infectious disease caused by the SARS-CoV-2 virus.",
-        "vaccines": [
-            { "vaccineId": 9 }
-        ]
-    },
-    {
-        "virusId": 10,
-        "name": "COVID-19",
-        "description": "COVID-19 is an infectious disease caused by the SARS-CoV-2 virus.",
-        "vaccines": [
-            { "vaccineId": 10 }
-        ]
-    },
-    {
-        "virusId": 11,
+        "virusId": 6,
         "name": "HPV",
         "description": "Human papillomavirus (HPV) is a viral infection that commonly causes skin or mucous membrane growths (warts).",
         "vaccines": [
