@@ -8,6 +8,7 @@ const App = () => {
     const [selectedVirus, setSelectedVirus] = useState(viruses[0]);
     const [selectedVaccine, setSelectedVaccine] = useState(vaccines[0]);
     const [selectedManufacturer, setSelectedManufacturer] = useState({});
+    const [selectedAccreditation, setSelectedAccreditation] = useState(vaccines[0].accreditation[0])
     const [detailsType, setDetailsType] = useState("Virus");
 
     const handleSearch = keyword => {
@@ -33,6 +34,11 @@ const App = () => {
         setDetailsType("Manufacturer");
     };
 
+    const handleSelectAccreditation = accreditation => {
+        setSelectedAccreditation(accreditation);
+        setDetailsType("Accreditation");
+    }
+
     const getVaccineById = vaccineId => {
         return vaccines.find(vaccine => vaccine.vaccineId === vaccineId);
     };
@@ -42,22 +48,16 @@ const App = () => {
         return vaccine.country;
     };
 
-    const getAccreditationsForVaccine = vaccineId => {
-        const vaccine = getVaccineById(vaccineId);
-        return vaccine && vaccine.accreditation ? vaccine.accreditation.join(', ') : '-';
-    };
-
     const getManufacturerByVaccine = () => {
         const manufacturer = manufacturers.find(manufacturer=>manufacturer.manufacturerId===selectedVaccine.manufacturerId)
         return manufacturer.name;
     };
 
-    const getRecommendationForVaccine = vaccineId => {
-        const vaccine = getVaccineById(vaccineId);
-        return vaccine ? vaccine.recommendation : '-';
+    const getRecommendationByVaccine = () => {
+        return selectedVaccine.recommendation;
     };
 
-    const getVaccineNames = (vaccinesArray) => {
+    const getVaccineNames = vaccinesArray => {
         if (!vaccinesArray || vaccinesArray.length === 0) return ['-'];
     
         return vaccinesArray.map(vaccine => {
@@ -65,6 +65,10 @@ const App = () => {
             return vaccineDetail ? vaccineDetail.name : '-';
         });
     };
+
+    const getVaccinesByAccreditation = () => {
+        return vaccines.filter(vaccine => vaccine.accreditation.includes(selectedAccreditation));
+    }
     
     return (
         <div className='container'>
@@ -115,8 +119,8 @@ const App = () => {
                                     <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine)}>{vaccine}</span>)}</td>
                                     <td className='country-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>) : '-'}</td>
                                     <td className='manufacturer-cell'><span className='pill-unselected badge' onClick={()=>handleSelectManufacturer()}>{getManufacturerByVaccine()}</span></td>
-                                    <td className='accreditation-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getAccreditationsForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
-                                    <td className='recommendation-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getRecommendationForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
+                                    <td className='accreditation-cell'>{selectedVaccine.accreditation.map((accreditation=><span className='pill-unselected badge' onClick={()=>handleSelectAccreditation(accreditation)}>{accreditation}</span>))}</td>
+                                    <td className='recommendation-cell'>{getRecommendationByVaccine()}</td>
                                 </tr> 
                             </tbody>
                         </table>
@@ -130,6 +134,8 @@ const App = () => {
                             <span className='last-updated text-muted position-absolute end-0 bottom-0'>Last updated: {selectedVaccine.lastUpdated}</span>
                         </div> : detailsType==="Manufacturer" ? <div>
                             {selectedManufacturer.description}
+                        </div> : detailsType==="Accreditation" ? <div>
+                            {getVaccinesByAccreditation().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
                         </div> : <></>}
                     </div>
                 </div>

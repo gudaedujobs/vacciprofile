@@ -17,7 +17,7 @@
         "virusId": 2, 
         "manufacturerId": 5,
         "country": ["United States", "European Union", "United Kingdom", "Canada", "Australia"],
-        "accreditation": ["FDA", "EMA", "MHRA", "Health Canada", "TGA"],
+        "accreditation": ["FDA", "EMA"],
         "recommendation": "-",
         "description": "Comirnaty is a COVID-19 vaccine developed by Pfizer and BioNTech. It uses mRNA technology to provide immunity against the SARS-CoV-2 virus, which causes COVID-19. The vaccine was one of the first COVID-19 vaccines to receive emergency use authorization and has been widely administered around the world to help control the pandemic.",
         "link": "https://www.pfizer.com/products/product-detail/comirnaty",
