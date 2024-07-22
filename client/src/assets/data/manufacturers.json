@@ -134,5 +134,10 @@
             
             }
         ]
+    },
+    {
+        "manufacturerId": 6,
+        "name": "AstraZeneca",
+        "description": "TBU"
     }
 ]

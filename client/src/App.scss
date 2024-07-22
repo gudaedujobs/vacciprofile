@@ -59,7 +59,8 @@ table {
 }
 
 .pill-unselectable:hover {
-    cursor: none;
+    background-color: $unselectable!important;  
+    cursor: default;
 }
 
 .subheading {

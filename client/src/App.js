@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './App.scss';
-// import manufacturers from './assets/data/manufacturers.json';
+import manufacturers from './assets/data/manufacturers.json';
 import viruses from './assets/data/viruses.json';
 import vaccines from './assets/data/vaccines.json';
 
 const App = () => {
-    // const [selectedManufacturer, setSelectedManufacturer] = useState({});
     const [selectedVirus, setSelectedVirus] = useState(viruses[0]);
-    const [selectedVaccine, setSelectedVaccine] = useState({});
+    const [selectedVaccine, setSelectedVaccine] = useState(vaccines[0]);
+    const [selectedManufacturer, setSelectedManufacturer] = useState({});
     const [detailsType, setDetailsType] = useState("Virus");
 
     const handleSearch = keyword => {
@@ -21,8 +21,16 @@ const App = () => {
         setDetailsType("Virus");
     };
 
-    const handleSelectVaccine = vaccine => {
+    const handleSelectVaccine = name => {
+        const vaccine = vaccines.find(vaccine=> vaccine.name === name);
         setSelectedVaccine(vaccine);
+        setDetailsType("Vaccine");
+    };
+
+    const handleSelectManufacturer = () => {
+        const manufacturer = manufacturers.find(manufacturer=> manufacturer.manufacturerId === selectedVaccine.manufacturerId);
+        setSelectedManufacturer(manufacturer);
+        setDetailsType("Manufacturer");
     };
 
     const getVaccineById = vaccineId => {
@@ -39,9 +47,9 @@ const App = () => {
         return vaccine && vaccine.accreditation ? vaccine.accreditation.join(', ') : '-';
     };
 
-    const getManufacturerForVaccine = vaccineId => {
-        const vaccine = getVaccineById(vaccineId);
-        return vaccine ? vaccine.manufacturer : '-';
+    const getManufacturerByVaccine = () => {
+        const manufacturer = manufacturers.find(manufacturer=>manufacturer.manufacturerId===selectedVaccine.manufacturerId)
+        return manufacturer.name;
     };
 
     const getRecommendationForVaccine = vaccineId => {
@@ -95,7 +103,7 @@ const App = () => {
                                 <tr>
                                     <th>Virus</th>
                                     <th>Vaccine(s)</th>
-                                    <th>Country</th>
+                                    <th>Countries</th>
                                     <th>Manufacturer</th>
                                     <th>Accreditation</th>
                                     <th>Recommendation</th>
@@ -104,9 +112,9 @@ const App = () => {
                             <tbody>
                                 <tr>
                                     <td className='virus-cell'><span className='pill-unselected badge'>{selectedVirus.name}</span></td>
-                                    <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge'>{vaccine}</span>)}</td>
+                                    <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine)}>{vaccine}</span>)}</td>
                                     <td className='country-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>) : '-'}</td>
-                                    <td className='manufacturer-cell'><span className='pill-unselected badge'>{selectedVirus.vaccines?.[0]?.vaccineId ? getManufacturerForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</span></td>
+                                    <td className='manufacturer-cell'><span className='pill-unselected badge' onClick={()=>handleSelectManufacturer()}>{getManufacturerByVaccine()}</span></td>
                                     <td className='accreditation-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getAccreditationsForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
                                     <td className='recommendation-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getRecommendationForVaccine(selectedVirus.vaccines[0].vaccineId) : '-'}</td>
                                 </tr> 
@@ -117,7 +125,9 @@ const App = () => {
                         {detailsType==="Virus" ? <div>
                             {selectedVirus.description}
                         </div> : detailsType==="Vaccine" ? <div>
-                            {selectedVirus.description}
+                            {selectedVaccine.description}
+                        </div> : detailsType==="Manufacturer" ? <div>
+                            {selectedManufacturer.description}
                         </div> : <></>}
                     </div>
                 </div>
