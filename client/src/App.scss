@@ -2,23 +2,17 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
-
-/* td:not(:last-child), th:not(:last-child) {
-    border-right: 1px solid rgb(175, 175, 175);
-} */
-
-
 a {
     text-decoration: none!important;
     color: inherit;
-  }
+}
   
 .container {
     max-width: 100%;
 }
   
 .row {
-    padding: 0 10vw;
+    padding: 0 7vw;
 }
 
 
@@ -40,19 +34,31 @@ a {
     background-color: $darker !important;
     color: white !important;
 }
-  
-td, th, span {
-    word-wrap: break-word; 
-    overflow-wrap: break-word;
-}
 
 table {
     font-size: 14px;
     margin: 0;
 }
 
+td, th, span {
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+}
+
+td, th {
+    border: 1px solid rgb(208, 217, 220);
+} 
+
+.table-light tbody tr td, .table-light thead tr th {
+    border: 1px solid rgb(175, 175, 175);
+} 
+
 .table-success tbody tr td, .table-success thead tr th {
-    background-color: $tableLight;
+    background-color: $table;
+}
+
+.table-light tbody tr td, .table-light thead tr th {
+    background-color: white;
 }
 
 .pill-unselected {
@@ -91,6 +97,14 @@ table {
 
 .vaccines-label {
     font-size: 12px;
+}
+
+.manufacturer-table-source {
+    color: $warning;
+}
+
+.manufacturer-table-source:hover {
+    text-decoration: underline!important;
 }
 
 .read-more {

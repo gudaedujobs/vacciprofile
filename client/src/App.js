@@ -73,6 +73,11 @@ const App = () => {
     const getVaccinesByManufacturer = () => {
         return vaccines.filter(vaccine => vaccine.manufacturerId === selectedManufacturer.manufacturerId);
     }
+
+    const convertCamelCaseToReadable = string => {
+        return string==="ceo" ? "CEO" : string.replace(/([A-Z])/g, ' $1')
+                              .replace(/^./, (str) => str.toUpperCase());
+    };
     
     return (
         <div className='container'>
@@ -83,7 +88,7 @@ const App = () => {
                 </div>
             </div>
             <div className='row mt-4'>
-                <div className='sidebar col-6 col-sm-4 col-lg-3'>
+                <div className='sidebar col-6 col-sm-4 col-lg-3 pe-3'>
                     <div className='search-container'>
                         <span className="position-relative">
                             <input 
@@ -121,7 +126,7 @@ const App = () => {
                                 <tr>
                                     <td className='virus-cell'><span className='pill-unselected badge' onClick={()=>{handleSelectVirus(selectedVirus)}}>{selectedVirus.name}</span></td>
                                     <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine)}>{vaccine}</span>)}</td>
-                                    <td className='country-cell'>{selectedVirus.vaccines?.[0]?.vaccineId ? getCountriesForVaccine(selectedVirus.vaccines[0].vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>) : '-'}</td>
+                                    <td className='country-cell'>{getCountriesForVaccine(selectedVaccine.vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>)}</td>
                                     <td className='manufacturer-cell'><span className='pill-unselected badge' onClick={()=>handleSelectManufacturer()}>{getManufacturerByVaccine()}</span></td>
                                     <td className='accreditation-cell'>{selectedVaccine.accreditation.map((accreditation=><span className='pill-unselected badge' onClick={()=>handleSelectAccreditation(accreditation)}>{accreditation}</span>))}</td>
                                     <td className='recommendation-cell'>{getRecommendationByVaccine()}</td>
@@ -141,15 +146,33 @@ const App = () => {
                         </div> : detailsType==="Manufacturer" ? <div>
                             <h4 className='report-heading'>{selectedManufacturer.name}</h4> 
                             <p>{selectedManufacturer.description}</p>
-                            <table className='table'>
-                                <thead>
-                                    
-                                </thead>
-                            </table>
-                            <span className='vaccines-label'>Vaccines: </span>
-                            {getVaccinesByManufacturer().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
-                        </div> : detailsType==="Accreditation" ? <div>
-                            <h4 className='report-heading'>{selectedAccreditation} Vaccines</h4>
+                            <div className='table-responsive m-0'>
+                                <table className='table table-light w-100'>
+                                    <thead>
+                                        <tr>
+                                            <th className='text-center' colSpan={2}>Information</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {Object.entries(selectedManufacturer.information).map(([attributeKey, attributeValue], index) => {
+                                            return attributeKey !== "sources" && attributeKey !== "lastUpdated" ? <tr key={index}>
+                                                <td className='text-center' style={{ width: '50%' }}>{convertCamelCaseToReadable(attributeKey)}</td>
+                                                <td className='text-center'>{attributeValue}</td>
+                                            </tr> : <></> ;
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span>Source(s): {selectedManufacturer.information.sources.map((source, index)=><span key={index}>
+                                <a className='manufacturer-table-source' href={`${source.link}`} target="_blank" rel="noopener noreferrer">{source.title} </a>
+                                <span>({source.lastUpdated}){selectedManufacturer.information.sources.length>1 && index<selectedManufacturer.information.sources.length-1 ? ', ' : ''}</span></span>)}
+                            </span>
+                            <p>
+                                <span className='vaccines-label'>Vaccines: </span>
+                                {getVaccinesByManufacturer().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
+                            </p>
+                            </div> : detailsType==="Accreditation" ? <div>
+                            <h4 className='report-heading'>{selectedAccreditation}-Approved Vaccines</h4>
                             {getVaccinesByAccreditation().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
                         </div> : <></>}
                     </div>
