@@ -25,14 +25,33 @@ a {
 }
 
 .sidebar-item {
+    color: rgb(77, 77, 77)!important;
     font-size: 14px;
     padding-left: 9px;
     padding-right: 9px;
+    position: relative;
 }
 
 .sidebar-item:hover {
     background-color: $darker !important;
     color: white !important;
+}
+
+.sidebar-item.selected::before {
+    content: '';
+    position: absolute;
+    right: -14px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 11px solid transparent; 
+    border-bottom: 11px solid transparent;
+    border-left: 15px solid $light; 
+}
+
+.sidebar-item:hover::before {
+    border-left-color: $darker; 
 }
 
 table {
@@ -63,6 +82,7 @@ td, th {
 
 .pill-unselected {
     background-color: $pale;
+    // font-weight: bold!important;
     font-weight: 100;
     font-size: 12px;
     display: inline-block;
@@ -76,17 +96,18 @@ td, th {
 }
 
 .pill-unselected:hover {
-    background-color: $hover!important;
+    background-color: $selected!important;
     cursor: pointer;
 }
 
 .pill-unselectable {
     background-color: $unselectable!important;
+    cursor: default!important;
 }
 
 .pill-unselectable:hover {
     background-color: $unselectable!important;  
-    cursor: default;
+    
 }
 
 .report-heading {
@@ -95,8 +116,8 @@ td, th {
     padding-top: 8px;
 }
 
-.vaccines-label {
-    font-size: 12px;
+.vaccines-list, .sources-list {
+    font-size: 13px!important;
 }
 
 .manufacturer-table-source {

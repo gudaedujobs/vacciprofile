@@ -20,6 +20,9 @@
         "accreditation": ["FDA", "EMA"],
         "recommendation": "-",
         "description": "Comirnaty is a COVID-19 vaccine developed by Pfizer and BioNTech. It uses mRNA technology to provide immunity against the SARS-CoV-2 virus, which causes COVID-19. The vaccine was one of the first COVID-19 vaccines to receive emergency use authorization and has been widely administered around the world to help control the pandemic.",
+        "vaccineType": "mRNA Covid vaccine",
+        "comments": "First license, 12/2020",
+        "revenue": "21 bn USD exepted (2021)",
         "link": "https://www.pfizer.com/products/product-detail/comirnaty",
         "lastUpdated": "TBU"
     },
@@ -56,6 +59,7 @@
         "accreditation": ["FDA", "EMA", "WHO"],
         "recommendation": "-",
         "description": "Prevnar 13 is a pneumococcal conjugate vaccine developed by Pfizer to protect against pneumococcal disease caused by 13 types of Streptococcus pneumoniae bacteria. This vaccine is intended for use in children and adults to prevent infections such as pneumonia, meningitis, and bloodstream infections. It is widely used in various countries and is recommended for individuals at higher risk of pneumococcal disease.",
+        "vaccineType": "13-valent pneumococcal conjugate vaccine",
         "link": "https://www.pfizer.com/products/product-detail/prevnar_13",
         "lastUpdated": "TBU"
     },
@@ -80,6 +84,7 @@
         "accreditation": ["EMA", "WHO"],
         "recommendation": "-",
         "description": "TicoVac™ is a vaccine developed by Pfizer for the prevention of tick-borne encephalitis (TBE), a viral infection transmitted by ticks. TicoVac™ is designed to provide protection against TBE and is used in regions where the disease is endemic.",
+        "vaccineType": "Tick-borne-encephalitis (TBE) whole-virus vaccine.",
         "link": "https://www.pfizer.com/products/product-detail/ticovac",
         "lastUpdated": "TBU"
     },
@@ -92,6 +97,7 @@
         "accreditation": ["FDA", "EMA"],
         "recommendation": "-",
         "description": "Trumenba™ is a vaccine developed by Pfizer to protect against serogroup B of Neisseria meningitidis, a bacterium that causes meningococcal disease. Trumenba™ is designed to prevent invasive meningococcal B infections in adolescents and young adults.",
+        "vaccineType": "Meningococcal B vaccine",
         "link": "https://www.pfizer.com/products/product-detail/trumenba",
         "lastUpdated": "TBU"
     },
