@@ -2,6 +2,18 @@
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 
+.hide-scrollbar {
+    overflow: auto; 
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; 
+}
+  
+
 a {
     text-decoration: none!important;
     color: inherit;
@@ -82,7 +94,7 @@ td, th {
 
 .pill-unselected {
     background-color: $pale;
-    // font-weight: bold!important;
+    font-weight: bold!important;
     font-weight: 100;
     font-size: 12px;
     display: inline-block;
@@ -90,7 +102,7 @@ td, th {
     word-wrap: break-word; 
     width: auto; 
     text-align: left;
-    padding: 4px 6.5px;
+    padding: 4px 8.5px;
     margin-bottom: 2px;
     margin-right: 3px;
 }
@@ -126,6 +138,11 @@ td, th {
 
 .manufacturer-table-source:hover {
     text-decoration: underline!important;
+}
+
+.hover-underline:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .read-more {

@@ -169,7 +169,7 @@ const App = () => {
                                     <span> ({source.lastUpdated}){selectedManufacturer.information.sources.length>1 && index<selectedManufacturer.information.sources.length-1 ? ', ' : ''}</span></span>)}
                                 </span>
                                 <div className='table-responsive'>
-                                    <table className='table table-light w-100 m-0'>
+                                    <table className='table table-light w-100 m-0 mt-3'>
                                         <thead>
                                             <tr>
                                                 <th colSpan={4} className='text-center'><i>Vaccines</i></th>
@@ -184,7 +184,7 @@ const App = () => {
                                         <tbody>
                                             {getVaccinesByManufacturer().map((vaccine, index) => (
                                                 <tr key={index}>
-                                                    <td><i>{<span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>}</i></td>
+                                                    <td><i>{<span className='text-primary fw-bold hover-underline' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>}</i></td>
                                                     <td><i>{vaccine.vaccineType || '-'}</i></td>
                                                     <td><i>{vaccine.comments || '-'}</i></td>
                                                     <td><i>{vaccine.revenue || '-'}</i></td>
