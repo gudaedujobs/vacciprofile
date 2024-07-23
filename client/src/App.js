@@ -109,94 +109,101 @@ const App = () => {
                             ))}
                         </div>
                     </div>
-                    <div className='view-container bg-white col-6 col-sm-8 col-lg-9 border border-primary border-1 rounded-4 p-0'>
-                        <h1 className='heading text-primary px-3 pt-2'>Updated Virus-Reported Data</h1>
-                        <div className='view-header table-responsive m-0'>
-                            <table className='table table-success w-100 m-0'>
-                                <thead>
-                                    <tr>
-                                        <th>Virus</th>
-                                        <th>Vaccine(s)</th>
-                                        <th>Countries</th>
-                                        <th>Manufacturer</th>
-                                        <th>Accreditation</th>
-                                        <th>Recommendation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className='virus-cell'><span className={`pill-unselected badge ${detailsType==="Virus" ? `bg-selected` : ``}`} onClick={()=>{handleSelectVirus(selectedVirus)}}>{selectedVirus.name}</span></td>
-                                        <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className={`pill-unselected badge ${detailsType==="Vaccine" && selectedVaccine.name === vaccine ? `bg-selected` : ``}`} onClick={()=>handleSelectVaccine(vaccine)}>{vaccine}</span>)}</td>
-                                        <td className='country-cell'>{getCountriesForVaccine(selectedVaccine.vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>)}</td>
-                                        <td className='manufacturer-cell'><span className={`pill-unselected badge ${detailsType==="Manufacturer" ? `bg-selected` : ``}`} onClick={()=>handleSelectManufacturer()}>{getManufacturerByVaccine()}</span></td>
-                                        <td className='accreditation-cell'>{selectedVaccine.accreditation.map((accreditation=><span className={`pill-unselected badge ${detailsType==="Accreditation" && selectedAccreditation === accreditation ? `bg-selected` : ``}`} onClick={()=>handleSelectAccreditation(accreditation)}>{accreditation}</span>))}</td>
-                                        <td className='recommendation-cell'>{getRecommendationByVaccine()}</td>
-                                    </tr> 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className='details-container px-3 pt-2 pb-3'>
-                            {detailsType==="Virus" ? <div>
-                                <h4 className='report-heading'>{selectedVirus.name}</h4>
-                                <p>{selectedVirus.description}</p>
-                            </div> : detailsType==="Vaccine" ? <div className='position-relative'>
-                                <h4 className='report-heading'>{selectedVaccine.name}</h4>
-                                <p className='mb-3'>{selectedVaccine.description}</p>
-                                <p className='mb-0'><a className='read-more' target="_blank" rel="noopener noreferrer" href={`${selectedVaccine.link}`}>Learn more...</a></p>
-                                <span className='last-updated text-muted position-absolute end-0 bottom-0'>Last updated: {selectedVaccine.lastUpdated}</span>
-                            </div> : detailsType==="Manufacturer" ? <div>
-                                <h4 className='report-heading'>{selectedManufacturer.name}</h4> 
-                                <p>{selectedManufacturer.description}</p>
-                                <div className='table-responsive'>
-                                    <table className='table table-light w-100 m-0'>
-                                        <thead>
-                                            <tr>
-                                                <th className='text-center' colSpan={2}>Information</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {Object.entries(selectedManufacturer.information).map(([attributeKey, attributeValue], index) => {
-                                                return attributeKey !== "sources" && attributeKey !== "lastUpdated" ? <tr key={index}>
-                                                    <td className='text-center' style={{ width: '50%' }}>{convertCamelCaseToReadable(attributeKey)}</td>
-                                                    <td className='text-center'>{attributeValue}</td>
-                                                </tr> : <></> ;
-                                            })}
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <span className='sources-list'>Source(s): {selectedManufacturer.information.sources.map((source, index)=><span key={index}>
-                                    <a className='manufacturer-table-source' href={`${source.link}`} target="_blank" rel="noopener noreferrer">{source.title}</a>
-                                    <span> ({source.lastUpdated}){selectedManufacturer.information.sources.length>1 && index<selectedManufacturer.information.sources.length-1 ? ', ' : ''}</span></span>)}
-                                </span>
-                                <div className='table-responsive'>
-                                    <table className='table table-light w-100 m-0 mt-3'>
-                                        <thead>
-                                            <tr>
-                                                <th colSpan={4} className='text-center'><i>Vaccines</i></th>
-                                            </tr>
-                                            <tr>
-                                                <th><i>Tradename</i></th>
-                                                <th><i>Vaccine Type</i></th>
-                                                <th><i>Comments</i></th>
-                                                <th><i>Revenue</i></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {getVaccinesByManufacturer().map((vaccine, index) => (
-                                                <tr key={index}>
-                                                    <td><i>{<span className='text-primary fw-bold hover-underline' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>}</i></td>
-                                                    <td><i>{vaccine.vaccineType || '-'}</i></td>
-                                                    <td><i>{vaccine.comments || '-'}</i></td>
-                                                    <td><i>{vaccine.revenue || '-'}</i></td>
+                    <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0'>
+                        <div className='border border-primary border-1 rounded-3'>
+                            <h1 className='heading text-primary px-3 pt-2'>Updated Virus-Reported Data</h1>
+                            <div className='view-header table-responsive m-0'>
+                                <table className='table table-success w-100 m-0'>
+                                    <thead>
+                                        <tr>
+                                            <th>Virus</th>
+                                            <th>Vaccine(s)</th>
+                                            <th>Countries</th>
+                                            <th>Manufacturer</th>
+                                            <th>Accreditation</th>
+                                            <th>Recommendation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td className='virus-cell'><span className={`pill-unselected badge ${detailsType==="Virus" ? `bg-selected` : ``}`} onClick={()=>{handleSelectVirus(selectedVirus)}}>{selectedVirus.name}</span></td>
+                                            <td className='vaccine-cell'>{getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=><span key={index} className={`pill-unselected badge ${detailsType==="Vaccine" && selectedVaccine.name === vaccine ? `bg-selected` : ``}`} onClick={()=>handleSelectVaccine(vaccine)}>{vaccine}</span>)}</td>
+                                            <td className='country-cell'>{getCountriesForVaccine(selectedVaccine.vaccineId).map((country, index)=><span key={index} className='pill-unselected pill-unselectable badge bg-muted'>{country}</span>)}</td>
+                                            <td className='manufacturer-cell'><span className={`pill-unselected badge ${detailsType==="Manufacturer" ? `bg-selected` : ``}`} onClick={()=>handleSelectManufacturer()}>{getManufacturerByVaccine()}</span></td>
+                                            <td className='accreditation-cell'>{selectedVaccine.accreditation.map((accreditation=><span className={`pill-unselected badge ${detailsType==="Accreditation" && selectedAccreditation === accreditation ? `bg-selected` : ``}`} onClick={()=>handleSelectAccreditation(accreditation)}>{accreditation}</span>))}</td>
+                                            <td className='recommendation-cell'>{getRecommendationByVaccine()}</td>
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className='details-container px-3 pt-2 pb-3'>
+                                {detailsType==="Virus" ? <div>
+                                    <h4 className='report-heading'>{selectedVirus.name}</h4>
+                                    <p>{selectedVirus.description}</p>
+                                </div> : detailsType==="Vaccine" ? <div className='position-relative'>
+                                    <h4 className='report-heading'>{selectedVaccine.name}</h4>
+                                    <p className='mb-3'>{selectedVaccine.description}</p>
+                                    <p className='mb-0'><a className='read-more' target="_blank" rel="noopener noreferrer" href={`${selectedVaccine.link}`}>Learn more...</a></p>
+                                    <span className='last-updated text-muted position-absolute end-0 bottom-0'>Last updated: {selectedVaccine.lastUpdated}</span>
+                                </div> : detailsType==="Manufacturer" ? <div>
+                                    <h4 className='report-heading'>{selectedManufacturer.name}</h4> 
+                                    <p>{selectedManufacturer.description}</p>
+                                    <div className='table-responsive'>
+                                        <table className='table table-light w-100 m-0'>
+                                            <thead>
+                                                <tr>
+                                                    <th className='text-center' colSpan={2}>Information</th>
                                                 </tr>
-                                                ))}
+                                            </thead>
+                                            <tbody>
+                                                {Object.entries(selectedManufacturer.information).map(([attributeKey, attributeValue], index) => {
+                                                    return attributeKey !== "sources" && attributeKey !== "lastUpdated" ? <tr key={index}>
+                                                        <td className='text-center' style={{ width: '50%' }}>{convertCamelCaseToReadable(attributeKey)}</td>
+                                                        <td className='text-center'>{attributeValue}</td>
+                                                    </tr> : <></> ;
+                                                })}
                                             </tbody>
                                         </table>
                                     </div>
-                                </div> : detailsType==="Accreditation" ? <div>
-                                <h4 className='report-heading'>{selectedAccreditation}-Approved Vaccines</h4>
-                                {getVaccinesByAccreditation().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
-                            </div> : <></>}
+                                    <span className='sources-list'>Source(s): {selectedManufacturer.information.sources.map((source, index)=><span key={index}>
+                                        <a className='manufacturer-table-source' href={`${source.link}`} target="_blank" rel="noopener noreferrer">{source.title}</a>
+                                        <span> ({source.lastUpdated}){selectedManufacturer.information.sources.length>1 && index<selectedManufacturer.information.sources.length-1 ? ', ' : ''}</span></span>)}
+                                    </span>
+                                    <div className='table-responsive'>
+                                        <table className='table table-light w-100 m-0 mt-3'>
+                                            <thead>
+                                                <tr>
+                                                    <th colSpan={4} className='text-center'><i>Vaccines</i></th>
+                                                </tr>
+                                                <tr>
+                                                    <th><i>Tradename</i></th>
+                                                    <th><i>Vaccine Type</i></th>
+                                                    <th><i>Comments</i></th>
+                                                    <th><i>Revenue</i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {getVaccinesByManufacturer().map((vaccine, index) => (
+                                                    <tr key={index}>
+                                                        <td><i>{<span className='text-primary fw-bold hover-underline' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>}</i></td>
+                                                        <td><i>{vaccine.vaccineType || '-'}</i></td>
+                                                        <td><i>{vaccine.comments || '-'}</i></td>
+                                                        <td><i>{vaccine.revenue || '-'}</i></td>
+                                                    </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div> : detailsType==="Accreditation" ? <div>
+                                    <h4 className='report-heading'>{selectedAccreditation}-Approved Vaccines</h4>
+                                    {getVaccinesByAccreditation().map((vaccine=><span className='pill-unselected badge' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>))}
+                                </div> : <></>}
+                            </div>
+                        </div>
+                        <div className="alphabet-container d-flex justify-content-around mt-1">
+                        {Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)).map(letter => (
+                            <span key={letter} className="alphabet-item">{letter}</span>
+                        ))}
                         </div>
                     </div>
                 </div>

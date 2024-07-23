@@ -156,3 +156,24 @@ td, th {
 .last-updated {
     font-size: 11px;
 }
+
+.alphabet-container {
+    width: 100%;
+    text-align: center; 
+}
+  
+.alphabet-item {
+    font-size: 12px;
+    background-color: $tertiary;
+    color: white;
+    border-radius: 0.25em;
+    text-align: center;
+    box-sizing: border-box;
+    width: 25px;
+    padding: 1.5px 0;
+}
+
+.alphabet-item:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
