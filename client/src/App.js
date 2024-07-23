@@ -110,7 +110,7 @@ const App = () => {
                         </div>
                     </div>
                     <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0'>
-                        <div className='border border-primary border-1 rounded-3'>
+                        <div className='border border-primary border-1 rounded-4'>
                             <h1 className='heading text-primary px-3 pt-2'>Updated Virus-Reported Data</h1>
                             <div className='view-header table-responsive m-0'>
                                 <table className='table table-success w-100 m-0'>
