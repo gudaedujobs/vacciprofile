@@ -44,9 +44,10 @@ a {
     position: relative;
 }
 
-.sidebar-item:hover {
+.sidebar-item.unselected:hover {
     background-color: $darker !important;
     color: white !important;
+    cursor: pointer;
 }
 
 .sidebar-item.selected::before {
@@ -62,7 +63,7 @@ a {
     border-left: 15px solid $light; 
 }
 
-.sidebar-item:hover::before {
+.sidebar-item.unselected:hover::before {
     border-left-color: $darker; 
 }
 
@@ -90,6 +91,22 @@ td, th {
 
 .table-light tbody tr td, .table-light thead tr th {
     background-color: white;
+}
+
+.empty-view {
+    height: 300px;
+}
+
+.arrow-image {
+    width: 160px;
+    height: 40px;
+    top: 34px;
+    left: 10px;
+}
+
+.select-prompt {
+    top: 39px;
+    left: 175px;
 }
 
 .pill-unselected {
