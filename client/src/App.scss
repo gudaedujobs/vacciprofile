@@ -128,7 +128,7 @@ td, th {
     padding-top: 8px;
 }
 
-.vaccines-list, .sources-list {
+.sources-list {
     font-size: 13px!important;
 }
 
@@ -140,9 +140,19 @@ td, th {
     text-decoration: underline!important;
 }
 
-.hover-underline:hover {
+.hover-underline:hover, .hover-pill:hover {
+    color: $hover;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.text-selected:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.text-decoration-none {
+    text-decoration: none!important;
 }
 
 .read-more {
@@ -158,7 +168,7 @@ td, th {
 }
 
 .alphabet-container {
-    width: 100%;
+    width: 780px;
     text-align: center; 
 }
   
@@ -166,14 +176,20 @@ td, th {
     font-size: 12px;
     background-color: $tertiary;
     color: white;
-    border-radius: 0.25em;
+    border-radius: 0.15em;
     text-align: center;
     box-sizing: border-box;
-    width: 25px;
-    padding: 1.5px 0;
+    width: 24px;
+    padding: 2px 0;
 }
 
 .alphabet-item:hover {
+    color: $dark;
     font-weight: bold;
     cursor: pointer;
+}
+
+.alphabet-item.bg-primary:hover {
+    color: white;
+    font-weight: 400;
 }
