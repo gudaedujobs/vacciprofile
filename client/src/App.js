@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import './App.scss';
 
 import Header from './components/Header';
-import Alphabets from './components/Alphabets';
-import NavigationTable from './components/NavigationTable';
 import Sidebar from './components/Sidebar';
-import Virus from './components/virus/Virus';
-import Vaccine from './components/vaccine/Vaccine';
-import Manufacturer from './components/manufacturer/Manufacturer';
+import Main from './components/Main.js';
+import Alphabets from './components/Alphabets';
 
 import manufacturers from './assets/data/manufacturers.json';
 import viruses from './assets/data/viruses.json';
@@ -130,76 +127,28 @@ const App = () => {
                         handleSelectVirus={handleSelectVirus}
                         handleSearch={handleSearch}
                     />
-                    <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0'>
-                        <div className='border border-primary border-1 rounded-4'>
-                            { filterViruses(viruses).length === 0 ? <div className='empty-view d-flex justify-content-center align-items-center'>
-                                    {/* <a>Clear filters</a> */}
-                                </div> : (activeFilters.firstAlphabet || JSON.stringify(selectedVirus) === '{}') ? <div className='empty-view position-relative'>
-                                <img className='arrow-image position-absolute' src="/images/arrow.png" alt="Arrow" width={100} height={100}/>
-                                <span className='select-prompt position-absolute'>Select a vaccine to begin</span>
-                            </div> : <>
-                                <h1 className='heading text-primary px-3 pt-2'>Updated Virus-Reported Data</h1>
-                                <NavigationTable 
-                                    detailsType={detailsType}
-                                    selectedVirus={selectedVirus}
-                                    selectedVaccine={selectedVaccine}
-                                    selectedAccreditation={selectedAccreditation}
-                                    handleSelectVirus={handleSelectVirus} 
-                                    handleSelectVaccine={handleSelectVaccine}
-                                    handleSelectManufacturer={handleSelectManufacturer}
-                                    handleSelectAccreditation={handleSelectAccreditation}
-                                    getCountriesByVaccine={getCountriesByVaccine}
-                                    getVaccineNames={getVaccineNames}
-                                    getManufacturerByVaccine={getManufacturerByVaccine}
-                                    getRecommendationByVaccine={getRecommendationByVaccine}
-                                />
-                                <div className='details-container px-3 pt-2 pb-3'>
-                                    {detailsType==="Virus" 
-                                    ? <Virus 
-                                        selectedVirus={selectedVirus} 
-                                        italizeScientificNames={italizeScientificNames}
-                                    /> : detailsType==="Vaccine" 
-                                    ? <Vaccine 
-                                        selectedVaccine={selectedVaccine}
-                                        italizeScientificNames={italizeScientificNames}
-                                    />: detailsType==="Manufacturer" 
-                                    ? <Manufacturer
-                                        selectedManufacturer={selectedManufacturer}
-                                        handleSelectVaccine={handleSelectVaccine}
-                                        getVaccinesByManufacturer={getVaccinesByManufacturer}
-                                        convertCamelCaseToReadable={convertCamelCaseToReadable}
-                                    /> : detailsType==="Accreditation" ? <div>
-                                        <h4 className='report-heading text-center'>{selectedAccreditation}</h4>
-                                        <div className='table-responsive'>
-                                            <table className='table table-light w-100 m-0 mt-3'>
-                                                <thead>
-                                                    <tr>
-                                                        <th colSpan={4} className='text-center'><i>Vaccines</i></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th><i>Tradename</i></th>
-                                                        <th><i>Vaccine Type</i></th>
-                                                        <th><i>Comments</i></th>
-                                                        <th><i>Revenue</i></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {getVaccinesByAccreditation().map((vaccine, index) => (
-                                                        <tr key={index}>
-                                                            <td><i>{<span className='text-primary fw-bold hover-underline' onClick={()=>handleSelectVaccine(vaccine.name)}>{vaccine.name}</span>}</i></td>
-                                                            <td><i>{vaccine.vaccineType || '-'}</i></td>
-                                                            <td><i>{vaccine.comments || '-'}</i></td>
-                                                            <td><i>{vaccine.revenue || '-'}</i></td>
-                                                        </tr>
-                                                        ))}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                    </div> : <></>}
-                                </div>
-                            </>}
-                        </div>
-                    </div>
+                    <Main
+                        viruses={viruses}
+                        activeFilters={activeFilters}
+                        filterViruses={filterViruses}
+                        selectedVirus={selectedVirus}
+                        selectedVaccine={selectedVaccine}
+                        selectedManufacturer={selectedManufacturer}
+                        selectedAccreditation={selectedAccreditation}
+                        detailsType={detailsType}
+                        handleSelectVirus={handleSelectVirus}
+                        handleSelectVaccine={handleSelectVaccine}
+                        handleSelectManufacturer={handleSelectManufacturer}
+                        handleSelectAccreditation={handleSelectAccreditation}
+                        getCountriesByVaccine={getCountriesByVaccine}
+                        getVaccineNames={getVaccineNames}
+                        getVaccinesByManufacturer={getVaccinesByManufacturer}
+                        getVaccinesByAccreditation={getVaccinesByAccreditation}
+                        getManufacturerByVaccine={getManufacturerByVaccine}
+                        getRecommendationByVaccine={getRecommendationByVaccine}
+                        italizeScientificNames={italizeScientificNames}
+                        convertCamelCaseToReadable={convertCamelCaseToReadable}
+                    />
                     <Alphabets activeFilters={activeFilters} setActiveFilters={setActiveFilters}/>
                 </div>
             </div>
