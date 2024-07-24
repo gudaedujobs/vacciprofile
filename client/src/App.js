@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Alphabets from './components/Alphabets';
 import NavigationTable from './components/NavigationTable';
 import Sidebar from './components/Sidebar';
+import Virus from './components/virus/Virus';
 
 import manufacturers from './assets/data/manufacturers.json';
 import viruses from './assets/data/viruses.json';
@@ -151,10 +152,7 @@ const App = () => {
                                     getRecommendationByVaccine={getRecommendationByVaccine}
                                 />
                                 <div className='details-container px-3 pt-2 pb-3'>
-                                    {detailsType==="Virus" ? <div>
-                                        <h4 className='report-heading'>{selectedVirus.name}</h4>
-                                        <p>{italizeScientificNames(selectedVirus.description)}</p>
-                                    </div> : detailsType==="Vaccine" ? <div className='position-relative'>
+                                    {detailsType==="Virus" ? <Virus selectedVirus={selectedVirus} italizeScientificNames={italizeScientificNames}/> : detailsType==="Vaccine" ? <div className='position-relative'>
                                         <h4 className='report-heading'>{selectedVaccine.name}</h4>
                                         <p className='mb-3'>{italizeScientificNames(selectedVaccine.description)}</p>
                                         <p className='mb-0'><a className='read-more' target="_blank" rel="noopener noreferrer" href={`${selectedVaccine.link}`}>Learn more...</a></p>
