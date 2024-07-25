@@ -4,7 +4,7 @@ const Manufacturer = ({ selectedManufacturer, getVaccinesByManufacturer, handleS
     return <div>
     <h4 className='report-heading'>{selectedManufacturer.name}</h4> 
     <p>{selectedManufacturer.description}</p>
-    <div className='table-responsive'>
+    {selectedManufacturer.information ? <><div className='table-responsive'>
         <table className='table table-light w-100 m-0'>
             <thead>
                 <tr>
@@ -24,7 +24,7 @@ const Manufacturer = ({ selectedManufacturer, getVaccinesByManufacturer, handleS
     <span className='sources-list'>Source(s): {selectedManufacturer.information.sources.map((source, index)=><span key={index}>
         <a className='manufacturer-table-source' href={`${source.link}`} target="_blank" rel="noopener noreferrer">{source.title}</a>
         <span> ({source.lastUpdated}){selectedManufacturer.information.sources.length>1 && index<selectedManufacturer.information.sources.length-1 ? ', ' : ''}</span></span>)}
-    </span>
+    </span></> : <></>}
 </div>
 }
 

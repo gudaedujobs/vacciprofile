@@ -35,7 +35,7 @@ const NavigationTable = ({
                     </td>
                     <td className='virus-cell'>
                         <span 
-                            className={`${detailsType==="Virus" && selectedVaccine.name === vaccine.name ? `selected` : `selectable`}`} 
+                            className={`${detailsType==="Virus" && selectedVirus.name === getVirusByVaccine(vaccine).name ? `selected` : `selectable`}`} 
                             onClick={()=>{handleSelectVirus(getVirusByVaccine(vaccine))}}>{getVirusByVaccine(vaccine).name}
                         </span>
                     </td>
