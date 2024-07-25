@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.scss';
+import './assets/animations/animations.css';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -149,7 +150,10 @@ const App = () => {
                         italizeScientificNames={italizeScientificNames}
                         convertCamelCaseToReadable={convertCamelCaseToReadable}
                     />
-                    <Alphabets activeFilters={activeFilters} setActiveFilters={setActiveFilters}/>
+                    <Alphabets 
+                        activeFilters={activeFilters} 
+                        setActiveFilters={setActiveFilters}
+                    />
                 </div>
             </div>
         </div>

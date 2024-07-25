@@ -1,10 +1,10 @@
 import React from 'react';
 
 import NavigationTable from './NavigationTable';
-import Virus from './virus/Virus';
-import Vaccine from './vaccine/Vaccine';
-import Manufacturer from './manufacturer/Manufacturer';
-import Accreditation from './accreditation/Accreditation';
+import Virus from './Virus';
+import Vaccine from './Vaccine';
+import Manufacturer from './Manufacturer';
+import Accreditation from './Accreditation';
 
 const Main = ({
     viruses, 
@@ -28,7 +28,7 @@ const Main = ({
     italizeScientificNames,
     convertCamelCaseToReadable
 }) => {
-    return <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0'>
+    return <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0 slide-left'>
         <div className='border border-primary border-1 rounded-4'>
             { filterViruses(viruses).length === 0 ? <div className='empty-view d-flex justify-content-center align-items-center'>
                     {/* <a>Clear filters</a> */}
@@ -68,9 +68,9 @@ const Main = ({
                         convertCamelCaseToReadable={convertCamelCaseToReadable}
                     /> : detailsType==="Accreditation" 
                     ? <Accreditation
+                        getVaccinesByAccreditation={getVaccinesByAccreditation}
                         handleSelectVaccine={handleSelectVaccine}
                         selectedAccreditation={selectedAccreditation}
-                        getVaccinesByAccreditation={getVaccinesByAccreditation}
                     /> 
                     : <></>}
                 </div>
