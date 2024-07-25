@@ -6,7 +6,7 @@ const Accreditation = ({
     getVaccinesByAccreditation
 }) => {
     return <div>
-        <h4 className='report-heading text-center'>{selectedAccreditation}</h4>
+        <h4 className='report-heading'>{selectedAccreditation}-approved Vaccines</h4>
         <div className='table-responsive'>
             <table className='table table-light w-100 m-0 mt-3'>
                 <thead>

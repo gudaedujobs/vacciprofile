@@ -21,17 +21,25 @@ const App = () => {
     const [selectedManufacturer, setSelectedManufacturer] = useState({});
     const [selectedAccreditation, setSelectedAccreditation] = useState(vaccines[0].accreditation[0])
     const [detailsType, setDetailsType] = useState("Virus");
+    const [manufacturersList, setManufacturersList] = useState(manufacturers);
 
-    const filterViruses = virusList => {
-        return activeFilters.firstAlphabet !== '' ? filterVirusesByAlphabet(virusList) : virusList;
+    const filterManufacturers = manufacturers => {
+        return activeFilters.firstAlphabet !== '' ? filterManufacturersByAlphabet(manufacturers) : manufacturers;
     }
 
-    const filterVirusesByAlphabet = virusList => {
-        return virusList.filter(virus => virus.name.startsWith(activeFilters.firstAlphabet));
+    const filterManufacturersByAlphabet = manufacturers => {
+        return manufacturers.filter(manufacturer => manufacturer.name.startsWith(activeFilters.firstAlphabet));
     }
 
     const handleSearch = keyword => {
-        // Handle search logic here
+        const searchKeyword = keyword.trim().toLowerCase();
+
+        const filteredArray = manufacturers.filter(manufacturer =>
+            manufacturer.name.toLowerCase().includes(searchKeyword) ||
+            manufacturer.description.toLowerCase().includes(searchKeyword)
+        );
+
+        setManufacturersList(filteredArray);
     };
 
     const handleSelectVirus = virus => {
@@ -42,14 +50,13 @@ const App = () => {
         setActiveFilters({...activeFilters, firstAlphabet: ''});
     };
 
-    const handleSelectVaccine = name => {
-        const vaccine = vaccines.find(vaccine=> vaccine.name === name);
+    const handleSelectVaccine = vx => {
+        const vaccine = vaccines.find(vaccine=> vaccine.name === vx.name);
         setSelectedVaccine(vaccine);
         setDetailsType("Vaccine");
     };
 
-    const handleSelectManufacturer = () => {
-        const manufacturer = manufacturers.find(manufacturer=> manufacturer.manufacturerId === selectedVaccine.manufacturerId);
+    const handleSelectManufacturer = manufacturer => {
         setSelectedManufacturer(manufacturer);
         setDetailsType("Manufacturer");
     };
@@ -63,27 +70,17 @@ const App = () => {
         return vaccines.find(vaccine => vaccine.vaccineId === vaccineId);
     };
 
-    const getCountriesByVaccine = () => {
-        const vaccine = getVaccineById(selectedVaccine.vaccineId);
+    const getVirusByVaccine = vaccine => {
+        return viruses.find(virus => virus.virusId === vaccine.virusId);
+    };
+
+    const getCountriesByVaccine = vx => {
+        const vaccine = getVaccineById(vx.vaccineId);
         return vaccine.countries.join(', ');
     };    
 
-    const getManufacturerByVaccine = () => {
-        const manufacturer = manufacturers.find(manufacturer=>manufacturer.manufacturerId===selectedVaccine.manufacturerId)
-        return manufacturer.name;
-    };
-
-    const getRecommendationByVaccine = () => {
-        return selectedVaccine.recommendation;
-    };
-
-    const getVaccineNames = vaccinesArray => {
-        if (!vaccinesArray || vaccinesArray.length === 0) return ['-'];
-    
-        return vaccinesArray.map(vaccine => {
-            const vaccineDetail = getVaccineById(vaccine.vaccineId);
-            return vaccineDetail ? vaccineDetail.name : '-';
-        });
+    const getRecommendationByVaccine = vx => {
+        return vx.recommendation;
     };
 
     const getVaccinesByAccreditation = () => {
@@ -122,16 +119,15 @@ const App = () => {
                 <Header/>
                 <div className='row py-4'>
                     <Sidebar
-                        viruses={viruses}
-                        filterViruses={filterViruses}
-                        selectedVirus={selectedVirus}
-                        handleSelectVirus={handleSelectVirus}
+                        manufacturersList={manufacturersList}
+                        filterManufacturers={filterManufacturers}
+                        selectedManufacturer={selectedManufacturer}
+                        handleSelectManufacturer={handleSelectManufacturer}
                         handleSearch={handleSearch}
                     />
                     <Main
-                        viruses={viruses}
+                        manufacturersList={manufacturersList}
                         activeFilters={activeFilters}
-                        filterViruses={filterViruses}
                         selectedVirus={selectedVirus}
                         selectedVaccine={selectedVaccine}
                         selectedManufacturer={selectedManufacturer}
@@ -141,11 +137,10 @@ const App = () => {
                         handleSelectVaccine={handleSelectVaccine}
                         handleSelectManufacturer={handleSelectManufacturer}
                         handleSelectAccreditation={handleSelectAccreditation}
+                        getVirusByVaccine={getVirusByVaccine}
                         getCountriesByVaccine={getCountriesByVaccine}
-                        getVaccineNames={getVaccineNames}
                         getVaccinesByManufacturer={getVaccinesByManufacturer}
                         getVaccinesByAccreditation={getVaccinesByAccreditation}
-                        getManufacturerByVaccine={getManufacturerByVaccine}
                         getRecommendationByVaccine={getRecommendationByVaccine}
                         italizeScientificNames={italizeScientificNames}
                         convertCamelCaseToReadable={convertCamelCaseToReadable}

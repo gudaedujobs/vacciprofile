@@ -32,28 +32,6 @@
         "link": "https://www.pfizer.com/products/product-list"
     },
     {
-        "manufacturerId": 5,
-        "name": "Pfizer-BioNTech",
-        "description": "STAY TUNED FOR MORE INFORMATION",
-        "information": {
-            "founded": "",
-            "headquarters": "",
-            "ceo": "",
-            "revenue": "",
-            "operatingIncome": "",
-            "netIncome": "",
-            "totalAssets": "",
-            "totalEquity": "",
-            "numberOfEmployees": "",
-            "sources": [
-            ]
-        },
-        "vaccines": [
-            { "vaccineId": 2 },
-            { "vaccineId": 4 }
-        ]
-    },
-    {
         "manufacturerId": 2,
         "name": "Johnson & Johnson",
         "description": "Johnson & Johnson engages in research and development, manufacture and sale of a broad range of products in the health care field. They are organized into three business segments: Consumer Health, Pharmaceutical and Medical Devices. With products sold in over 175 countries, Johnson & Johnson’s key pharmaceutical products include REMICADE®, SIMPONI®, SIMPONI ARIA®, STELARA®, DARZALEX®, IMBRUVICA®, etc. Johnson & Johnson also produces a COVID-19 vaccine: Janssen COVID-19 Vaccine.",
@@ -145,6 +123,28 @@
             {
             
             }
+        ]
+    },
+    {
+        "manufacturerId": 5,
+        "name": "Pfizer-BioNTech",
+        "description": "STAY TUNED FOR MORE INFORMATION",
+        "information": {
+            "founded": "",
+            "headquarters": "",
+            "ceo": "",
+            "revenue": "",
+            "operatingIncome": "",
+            "netIncome": "",
+            "totalAssets": "",
+            "totalEquity": "",
+            "numberOfEmployees": "",
+            "sources": [
+            ]
+        },
+        "vaccines": [
+            { "vaccineId": 2 },
+            { "vaccineId": 4 }
         ]
     },
     {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sidebar = ({ viruses, filterViruses, selectedVirus, handleSelectVirus, handleSearch }) => {
+const Sidebar = ({ manufacturersList, filterManufacturers, selectedManufacturer, handleSelectManufacturer, handleSearch }) => {
     return <div className='sidebar col-6 col-sm-4 col-lg-3 pe-3 slide-right'>
         <div className='search-container'>
             <span className="position-relative">
@@ -8,9 +8,9 @@ const Sidebar = ({ viruses, filterViruses, selectedVirus, handleSelectVirus, han
                 <i className="fa fa-search position-absolute top-50 translate-middle-y end-0 me-2 text-muted" aria-hidden="true"></i>
             </span>
         </div>
-        <div className='virus-list mt-3'>
-            {filterViruses(viruses).map((virus, i) => (
-                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedVirus === virus ? 'active' : 'inactive'}`} onClick={() => handleSelectVirus(virus)}>{virus.name}</div>
+        <div className='Manufacturer-list mt-3'>
+            {filterManufacturers(manufacturersList).map((manufacturer, i) => (
+                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedManufacturer === manufacturer ? 'active' : 'inactive'}`} onClick={() =>handleSelectManufacturer(manufacturer)}>{manufacturer.name}</div>
             ))}
         </div>
     </div>
