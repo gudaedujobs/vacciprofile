@@ -20,9 +20,9 @@ const NavigationTable = ({
                 <tr>
                     <th>Virus</th>
                     <th>Vaccine(s)</th>
-                    <th>Countries</th>
                     <th>Manufacturer</th>
                     <th>Accreditation</th>
+                    <th className=''>Countries</th>
                     <th>Recommendation</th>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@ const NavigationTable = ({
                 <tr>
                     <td className='virus-cell'>
                         <span 
-                            className={`hover-pill ${detailsType==="Virus" ? `fw-bold text-selected` : ``}`} 
+                            className={`${detailsType==="Virus" ? `selected` : `selectable`}`} 
                             onClick={()=>{handleSelectVirus(selectedVirus)}}>{selectedVirus.name}
                         </span>
                     </td>
@@ -38,34 +38,36 @@ const NavigationTable = ({
                         {getVaccineNames(selectedVirus.vaccines).map((vaccine, index)=>
                         <span key={index}>
                             <span
-                                className={`hover-pill ${detailsType==="Vaccine" && selectedVaccine.name === vaccine ? `pill-unselected badge` : ``}`} 
+                                className={`${detailsType==="Vaccine" && selectedVaccine.name === vaccine ? `selected` : `selectable`}`} 
                                 onClick={()=>handleSelectVaccine(vaccine)}>
                                 {vaccine}
                             </span>
                             {index < selectedVirus.vaccines.length-1 
                             ? <span className='text-decoration-none'>, </span> 
                             : ``}
-                            </span>)}
-                        </td>
-                    <td className='country-cell'>
-                        {<span className='text-muted'>
-                            {getCountriesByVaccine()}
-                        </span>}
+                        </span>)}
                     </td>
                     <td className='manufacturer-cell'>
                         <span 
-                            className={`hover-pill ${detailsType==="Manufacturer" ? `fw-bold text-selected` : ``}`} 
+                            className={`${detailsType==="Manufacturer" ? `selected` : `selectable`}`} 
                             onClick={()=>handleSelectManufacturer()}>
                             {getManufacturerByVaccine()}
                         </span>
                     </td>
                     <td className='accreditation-cell'>
                         {selectedVaccine.accreditation.map((accreditation, index)=>
-                        <span key={index} 
-                            className={`hover-pill ${detailsType==="Accreditation" && selectedAccreditation === accreditation ? `pill-unselected badge` : ``}`} 
-                            onClick={()=>handleSelectAccreditation(accreditation)}>
-                                {accreditation}{index<selectedVaccine.accreditation.length-1 ? `, ` : ``}
+                        <span>
+                            <span key={index} 
+                                className={`${detailsType==="Accreditation" && selectedAccreditation === accreditation ? `selected` : `selectable`}`} 
+                                onClick={()=>handleSelectAccreditation(accreditation)}>
+                                {accreditation}
+                            </span>{index<selectedVaccine.accreditation.length-1 ? <span className='text-decoration-none'>, </span> : ``}
                         </span>)}
+                    </td>
+                    <td className='country-cell'>
+                        {<span className='text-muted'>
+                            {getCountriesByVaccine()}
+                        </span>}
                     </td>
                     <td className='recommendation-cell'>
                         {getRecommendationByVaccine()}

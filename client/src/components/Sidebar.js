@@ -10,7 +10,7 @@ const Sidebar = ({ viruses, filterViruses, selectedVirus, handleSelectVirus, han
         </div>
         <div className='virus-list mt-3'>
             {filterViruses(viruses).map((virus, i) => (
-                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedVirus === virus ? 'selected' : 'unselected'}`} onClick={() => handleSelectVirus(virus)}>{virus.name}</div>
+                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedVirus === virus ? 'active' : 'inactive'}`} onClick={() => handleSelectVirus(virus)}>{virus.name}</div>
             ))}
         </div>
     </div>

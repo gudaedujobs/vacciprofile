@@ -12,9 +12,10 @@ $danger:rgb(167, 57, 57);
 $table: rgb(220, 229, 227);
 $dark: #3e3f3e;
 $darker: rgb(141, 145, 144);
-$selected: rgb(56, 102, 95);
+$selectable: rgb(31, 49, 185);
+$selected: rgb(13, 19, 147);
 $pale: rgb(102, 141, 141);
-$hover: rgb(56, 101, 93);
+$hover: rgb(123, 119, 6);
 $unselectable: rgb(173, 184, 181);
 
 $theme-colors: (
@@ -32,7 +33,8 @@ $theme-colors: (
   "pale": $pale,
   "hover": $hover,
   "unselectable": $unselectable,
-  "table": $table
+  "table": $table,
+  "selectable": $selectable
 );
 
 @import '~bootstrap/scss/bootstrap.scss';

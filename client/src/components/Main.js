@@ -34,7 +34,7 @@ const Main = ({
                     {/* <a>Clear filters</a> */}
                 </div> : (activeFilters.firstAlphabet || JSON.stringify(selectedVirus) === '{}') ? <div className='empty-view position-relative'>
                 <img className='arrow-image position-absolute' src="/images/arrow.png" alt="Arrow" width={100} height={100}/>
-                <span className='select-prompt position-absolute'>Select a vaccine to begin</span>
+                <span className='select-prompt position-absolute'>Select a Virus</span>
             </div> : <>
                 <h1 className='heading text-primary px-3 pt-2'>Updated Virus-Reported Data</h1>
                 <NavigationTable 
