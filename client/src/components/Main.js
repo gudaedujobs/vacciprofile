@@ -42,7 +42,9 @@ const Main = ({
     return <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0 slide-left'>
         <div className='border border-primary border-1 rounded-4'>
             { manufacturersList.length === 0 ? <div className='empty-view d-flex justify-content-center align-items-center'>
-                    <span className='clear-filters text-underline' onClick={()=>setActiveFilters({...activeFilters, searchString: '', firstAlphabet: ''})}>Clear filters</span>
+                    <span className='clear-filters text-decoration-underline' onClick={()=>setActiveFilters({...activeFilters, searchString: '', firstAlphabet: ''})}>
+                        Clear filters
+                    </span>
                 </div> : ( manufacturersList.length!==0 && JSON.stringify(selectedManufacturer) === '{}') 
                 ? <div className='empty-view position-relative'>
                 <img className='arrow-image position-absolute' src="/images/arrow.png" alt="Arrow" width={100} height={100}/>

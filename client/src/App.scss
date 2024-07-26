@@ -109,6 +109,11 @@ td, th {
     text-decoration: underline;
 }
 
+.clear-filters:hover {
+    color: $hover;
+    cursor: pointer;
+}
+
 .empty-view {
     height: 300px;
 }
