@@ -1,6 +1,9 @@
 import React from 'react';
 
-const Manufacturer = ({ selectedManufacturer, getVaccinesByManufacturer, handleSelectVaccine, convertCamelCaseToReadable}) => {
+const Manufacturer = ({ 
+    selectedManufacturer, 
+    convertCamelCaseToReadable
+}) => {
     return <div className=''>
     <h4 className='report-heading'>{selectedManufacturer.name}</h4> 
     <p>{selectedManufacturer.description}</p>

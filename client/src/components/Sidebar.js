@@ -3,19 +3,24 @@ import React from 'react';
 const Sidebar = ({ 
     setDetailsType,
     manufacturersList,  
-    selectedManufacturer, 
+    selectedManufacturer,
+    setSelectedManufacturer, 
     handleSelectManufacturer, 
     handleSearch,
     setChangedFrom
 }) => {
-
-    function handleUpdate(manufacturer) {
-        setChangedFrom('Sidebar');
-        setTimeout(() => {
-            handleSelectManufacturer(manufacturer);
-            setDetailsType("Manufacturer");
-            setChangedFrom('');
-        }, 0);
+    
+    const handleChangeManufacturer = manufacturer => {
+        if(manufacturer!==selectedManufacturer) {
+            setChangedFrom('Sidebar');
+            setTimeout(() => {
+                handleSelectManufacturer(manufacturer);
+                setDetailsType("Manufacturer");
+                setChangedFrom('');
+            }, 0);
+        } else {
+            setSelectedManufacturer({});
+        }
     }
 
     return <div className='sidebar col-6 col-sm-4 col-lg-3 pe-3 slide-right'>
@@ -27,7 +32,7 @@ const Sidebar = ({
         </div>
         <div className='Manufacturer-list mt-3'>
             {manufacturersList.map((manufacturer, i) => (
-                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedManufacturer === manufacturer ? 'active' : 'inactive'}`} onClick={() =>handleUpdate(manufacturer)}>{manufacturer.name}</div>
+                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedManufacturer === manufacturer ? 'active' : 'inactive'}`} onClick={() =>handleChangeManufacturer(manufacturer)}>{manufacturer.name}</div>
             ))}
         </div>
     </div>

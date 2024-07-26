@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, act } from 'react';
 import './App.scss';
 import './assets/animations/animations.css';
 
@@ -133,6 +133,7 @@ const App = () => {
                     <Sidebar
                         manufacturersList={manufacturersList}
                         selectedManufacturer={selectedManufacturer}
+                        setSelectedManufacturer={setSelectedManufacturer}
                         handleSelectManufacturer={handleSelectManufacturer}
                         handleSearch={handleSearch}
                         setChangedFrom={setChangedFrom}
@@ -140,8 +141,9 @@ const App = () => {
                         setDetailsType={setDetailsType}
                     />
                     <Main
-                        manufacturersList={manufacturersList}
                         activeFilters={activeFilters}
+                        setActiveFilters={setActiveFilters}
+                        manufacturersList={manufacturersList}
                         selectedVirus={selectedVirus}
                         selectedVaccine={selectedVaccine}
                         selectedManufacturer={selectedManufacturer}

@@ -7,8 +7,9 @@ import Manufacturer from './Manufacturer';
 import Accreditation from './Accreditation';
 
 const Main = ({
+    activeFilters,
+    setActiveFilters,
     manufacturersList, 
-    activeFilters, 
     selectedVirus, 
     selectedVaccine, 
     selectedManufacturer,
@@ -41,7 +42,7 @@ const Main = ({
     return <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0 slide-left'>
         <div className='border border-primary border-1 rounded-4'>
             { manufacturersList.length === 0 ? <div className='empty-view d-flex justify-content-center align-items-center'>
-                    {/* <a>Clear filters</a> */}
+                    <span className='clear-filters text-underline' onClick={()=>setActiveFilters({...activeFilters, searchString: '', firstAlphabet: ''})}>Clear filters</span>
                 </div> : ( manufacturersList.length!==0 && JSON.stringify(selectedManufacturer) === '{}') 
                 ? <div className='empty-view position-relative'>
                 <img className='arrow-image position-absolute' src="/images/arrow.png" alt="Arrow" width={100} height={100}/>
@@ -54,8 +55,8 @@ const Main = ({
                     selectedVirus={selectedVirus}
                     selectedVaccine={selectedVaccine}
                     selectedAccreditation={selectedAccreditation}
-                    handleSelectVirus={handleSelectVirus} 
                     handleSelectVaccine={handleSelectVaccine}
+                    handleSelectVirus={handleSelectVirus} 
                     handleSelectAccreditation={handleSelectAccreditation}
                     getVaccinesByManufacturer={getVaccinesByManufacturer}
                     getVirusByVaccine={getVirusByVaccine}
@@ -74,7 +75,6 @@ const Main = ({
                     />: detailsType==="Manufacturer" 
                     ? <Manufacturer
                         selectedManufacturer={selectedManufacturer}
-                        handleSelectVaccine={handleSelectVaccine}
                         getVaccinesByManufacturer={getVaccinesByManufacturer}
                         convertCamelCaseToReadable={convertCamelCaseToReadable}
                     /> : detailsType==="Accreditation" 

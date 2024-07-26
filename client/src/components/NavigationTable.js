@@ -55,7 +55,9 @@ const NavigationTable = ({
                         </span>}
                     </td>
                     <td className='recommendation-cell'>
-                        {getRecommendationByVaccine(vaccine)}
+                        <span>
+                            {getRecommendationByVaccine(vaccine)}
+                        </span>
                     </td>
                 </tr>)}
             </tbody>
