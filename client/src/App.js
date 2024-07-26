@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import './assets/animations/animations.css';
 
@@ -14,32 +14,21 @@ import scientificNames from './assets/scientificNames';
 
 const App = () => {
     const [activeFilters, setActiveFilters] = useState({
-        firstAlphabet: ''
+        firstAlphabet: '',
+        searchKeyword: ''
     })
     const [selectedVirus, setSelectedVirus] = useState({});
     const [selectedVaccine, setSelectedVaccine] = useState(vaccines[0]);
     const [selectedManufacturer, setSelectedManufacturer] = useState({});
     const [selectedAccreditation, setSelectedAccreditation] = useState(vaccines[0].accreditation[0])
-    const [detailsType, setDetailsType] = useState("Virus");
+    const [detailsType, setDetailsType] = useState("");
     const [manufacturersList, setManufacturersList] = useState(manufacturers);
-
-    const filterManufacturers = manufacturers => {
-        return activeFilters.firstAlphabet !== '' ? filterManufacturersByAlphabet(manufacturers) : manufacturers;
-    }
-
-    const filterManufacturersByAlphabet = manufacturers => {
-        return manufacturers.filter(manufacturer => manufacturer.name.startsWith(activeFilters.firstAlphabet));
-    }
+    const [changedFrom, setChangedFrom] = useState('');
 
     const handleSearch = keyword => {
-        const searchKeyword = keyword.trim().toLowerCase();
-
-        const filteredArray = manufacturers.filter(manufacturer =>
-            manufacturer.name.toLowerCase().includes(searchKeyword) ||
-            manufacturer.description.toLowerCase().includes(searchKeyword)
-        );
-
-        setManufacturersList(filteredArray);
+        setActiveFilters({...activeFilters, 
+            searchKeyword: keyword
+        })
     };
 
     const handleSelectVirus = virus => {
@@ -112,6 +101,29 @@ const App = () => {
             </span>
         );
     };
+
+    useEffect(() => {
+        const filterManufacturersList = () => {
+            let filteredManufacturersList;
+            if (activeFilters.searchKeyword) {
+                filteredManufacturersList = manufacturers.filter(manufacturer =>
+                    manufacturer.name.toLowerCase().includes(activeFilters.searchKeyword.toLowerCase()) ||
+                    manufacturer.description.toLowerCase().includes(activeFilters.searchKeyword.toLowerCase())
+                );
+            } else {
+                filteredManufacturersList = manufacturers;
+            }
+
+            if (activeFilters.firstAlphabet) {
+                filteredManufacturersList = filteredManufacturersList.filter(manufacturer =>
+                    manufacturer.name.startsWith(activeFilters.firstAlphabet)
+                );
+            }
+            setManufacturersList(filteredManufacturersList);
+        };
+
+        filterManufacturersList();
+    }, [activeFilters]);
     
     return (
         <div className='vacciprofile-page'>
@@ -120,10 +132,12 @@ const App = () => {
                 <div className='row py-4'>
                     <Sidebar
                         manufacturersList={manufacturersList}
-                        filterManufacturers={filterManufacturers}
                         selectedManufacturer={selectedManufacturer}
                         handleSelectManufacturer={handleSelectManufacturer}
                         handleSearch={handleSearch}
+                        setChangedFrom={setChangedFrom}
+                        changedFrom={changedFrom}
+                        setDetailsType={setDetailsType}
                     />
                     <Main
                         manufacturersList={manufacturersList}
@@ -144,10 +158,12 @@ const App = () => {
                         getRecommendationByVaccine={getRecommendationByVaccine}
                         italizeScientificNames={italizeScientificNames}
                         convertCamelCaseToReadable={convertCamelCaseToReadable}
+                        changedFrom={changedFrom}
                     />
                     <Alphabets 
                         activeFilters={activeFilters} 
                         setActiveFilters={setActiveFilters}
+                        setSelectedManufacturer={setSelectedManufacturer}
                     />
                 </div>
             </div>

@@ -20,7 +20,7 @@ const NavigationTable = ({
                     <th>Vaccine</th>
                     <th>Virus</th>
                     <th>Accreditation</th>
-                    <th className=''>Countries</th>
+                    <th>Countries</th>
                     <th>Recommendation</th>
                 </tr>
             </thead>

@@ -1,6 +1,23 @@
 import React from 'react';
 
-const Sidebar = ({ manufacturersList, filterManufacturers, selectedManufacturer, handleSelectManufacturer, handleSearch }) => {
+const Sidebar = ({ 
+    setDetailsType,
+    manufacturersList,  
+    selectedManufacturer, 
+    handleSelectManufacturer, 
+    handleSearch,
+    setChangedFrom
+}) => {
+
+    function handleUpdate(manufacturer) {
+        setChangedFrom('Sidebar');
+        setTimeout(() => {
+            handleSelectManufacturer(manufacturer);
+            setDetailsType("Manufacturer");
+            setChangedFrom('');
+        }, 0);
+    }
+
     return <div className='sidebar col-6 col-sm-4 col-lg-3 pe-3 slide-right'>
         <div className='search-container'>
             <span className="position-relative">
@@ -9,8 +26,8 @@ const Sidebar = ({ manufacturersList, filterManufacturers, selectedManufacturer,
             </span>
         </div>
         <div className='Manufacturer-list mt-3'>
-            {filterManufacturers(manufacturersList).map((manufacturer, i) => (
-                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedManufacturer === manufacturer ? 'active' : 'inactive'}`} onClick={() =>handleSelectManufacturer(manufacturer)}>{manufacturer.name}</div>
+            {manufacturersList.map((manufacturer, i) => (
+                <div key={i} className={`sidebar-item bg-light text-dark rounded-3 py-1 mt-2 ${selectedManufacturer === manufacturer ? 'active' : 'inactive'}`} onClick={() =>handleUpdate(manufacturer)}>{manufacturer.name}</div>
             ))}
         </div>
     </div>
