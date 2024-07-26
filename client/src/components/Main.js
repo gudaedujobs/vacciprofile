@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import NavigationTable from './NavigationTable';
 import Virus from './Virus';
@@ -30,6 +30,8 @@ const Main = ({
     const detailsRef = useRef(null);
     const prevChangedFrom = useRef(changedFrom);
 
+    const [slideClass, setSlideClass] = useState('slide-left');
+
     useEffect(() => {
         if (prevChangedFrom.current !== 'Sidebar' && changedFrom !== 'Sidebar') {
             if (detailsRef.current) {
@@ -39,8 +41,16 @@ const Main = ({
         prevChangedFrom.current = changedFrom;
     }, [selectedVirus, selectedVaccine, selectedManufacturer, selectedAccreditation, changedFrom]);
 
-    return <div className='view-container bg-white col-6 col-sm-8 col-lg-9 p-0 slide-left'>
-        <div className='border border-primary border-1 rounded-4'>
+    useEffect(() => {
+        setSlideClass(''); 
+        const timeout = setTimeout(() => {
+            setSlideClass('slide-left'); 
+        }, 0); 
+        return () => clearTimeout(timeout);
+    }, [selectedManufacturer]);
+
+    return <div className={`view-container bg-white col-6 col-sm-8 col-lg-9 p-0 ${slideClass}`}>
+        <div className='border border-primary border-1 rounded-4 slide-left'>
             { manufacturersList.length === 0 ? <div className='empty-view d-flex justify-content-center align-items-center'>
                     <span className='clear-filters text-decoration-underline' onClick={()=>setActiveFilters({...activeFilters, searchString: '', firstAlphabet: ''})}>
                         Clear filters
@@ -64,7 +74,7 @@ const Main = ({
                     getVirusByVaccine={getVirusByVaccine}
                     getCountriesByVaccine={getCountriesByVaccine}
                     getRecommendationByVaccine={getRecommendationByVaccine}
-                />:``}
+                /> : ``}
                 <div className='details-container px-3 pt-2 pb-3' ref={detailsRef}>
                     {detailsType==="Virus" 
                     ? <Virus 
@@ -74,7 +84,7 @@ const Main = ({
                     ? <Vaccine 
                         selectedVaccine={selectedVaccine}
                         italizeScientificNames={italizeScientificNames}
-                    />: detailsType==="Manufacturer" 
+                    /> : detailsType==="Manufacturer" 
                     ? <Manufacturer
                         selectedManufacturer={selectedManufacturer}
                         getVaccinesByManufacturer={getVaccinesByManufacturer}

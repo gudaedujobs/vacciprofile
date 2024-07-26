@@ -18,9 +18,9 @@ const App = () => {
         searchKeyword: ''
     })
     const [selectedVirus, setSelectedVirus] = useState({});
-    const [selectedVaccine, setSelectedVaccine] = useState(vaccines[0]);
+    const [selectedVaccine, setSelectedVaccine] = useState({});
     const [selectedManufacturer, setSelectedManufacturer] = useState({});
-    const [selectedAccreditation, setSelectedAccreditation] = useState(vaccines[0].accreditation[0])
+    const [selectedAccreditation, setSelectedAccreditation] = useState("")
     const [detailsType, setDetailsType] = useState("");
     const [manufacturersList, setManufacturersList] = useState(manufacturers);
     const [changedFrom, setChangedFrom] = useState('');
@@ -40,7 +40,7 @@ const App = () => {
     };
 
     const handleSelectVaccine = vx => {
-        const vaccine = vaccines.find(vaccine=> vaccine.name === vx.name);
+        const vaccine = vaccines.find(vaccine => vaccine.name === vx.name);
         setSelectedVaccine(vaccine);
         setDetailsType("Vaccine");
     };
@@ -82,7 +82,6 @@ const App = () => {
 
     const convertCamelCaseToReadable = string => {
         return string==="ceo" ? "CEO" : string.replace(/([A-Z])/g, ' $1')
-                              .replace(/^./, (str) => str.toUpperCase());
     };
 
     const italizeScientificNames = text => {

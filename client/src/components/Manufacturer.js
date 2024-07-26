@@ -17,7 +17,7 @@ const Manufacturer = ({
             <tbody>
                 {Object.entries(selectedManufacturer.information).map(([attributeKey, attributeValue], index) => {
                     return attributeKey !== "sources" && attributeKey !== "lastUpdated" ? <tr key={index}>
-                        <td className='text-center' style={{ width: '50%' }}>{convertCamelCaseToReadable(attributeKey)}</td>
+                        <td className='text-center text-capitalize' style={{ width: '50%' }}>{convertCamelCaseToReadable(attributeKey)}</td>
                         <td className='text-center'>{attributeValue}</td>
                     </tr> : <></> ;
                 })}

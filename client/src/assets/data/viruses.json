@@ -20,7 +20,7 @@
     },
     {
         "virusId": 3,
-        "name": "Streptococcus pneumoniae (Bacterium)",
+        "name": "Streptococcus pneumoniae",
         "description": "Pneumococcal disease is caused by the bacterium Streptococcus pneumoniae. It can lead to various serious infections, including pneumonia, meningitis, and sepsis. The disease predominantly affects children and older adults, but can also impact other age groups. Symptoms can range from mild respiratory issues to severe illness requiring hospitalization.",
         "vaccines": [
             { "vaccineId": 3 },

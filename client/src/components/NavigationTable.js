@@ -18,7 +18,7 @@ const NavigationTable = ({
             <thead>
                 <tr>
                     <th>Vaccine</th>
-                    <th>Virus</th>
+                    <th>Virus/ Bacteria</th>
                     <th>Accreditation</th>
                     <th>Countries</th>
                     <th>Recommendation</th>
